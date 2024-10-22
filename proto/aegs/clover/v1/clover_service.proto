@@ -1,0 +1,164 @@
+syntax = "proto3";
+
+package aegs.clover.v1;
+
+import "aegs/clover/v1/models.proto";
+import "google/protobuf/timestamp.proto";
+
+// アークエッジ・スペースの地上局予約サービス。
+service CloverService {
+  // 衛星のリストを取得する。リストにはクライアントがアクセス可能な衛星しか含まれない。
+  rpc ListSatellites(ListSatellitesRequest) returns (ListSatellitesResponse);
+
+  // 指定した衛星を取得する。
+  rpc GetSatellite(GetSatelliteRequest) returns (GetSatelliteResponse);
+
+  // 指定した衛星の最新の TLE を取得する。
+  rpc GetLatestTLE(GetLatestTLERequest) returns (GetLatestTLEResponse);
+
+  // 指定した衛星の TLE を登録する。
+  // TLE が不正な場合は INVALID_ARGUMENT (3) が、最新の TLE と同じものを登録しようとした場合は ALREADY_EXISTS (6) のエラーが返る。
+  rpc RegisterTLE(RegisterTLERequest) returns (RegisterTLEResponse);
+
+  // 指定した衛星について利用可能な地上局のリストを取得する。
+  rpc ListAvailableGroundStations(ListAvailableGroundStationsRequest) returns (ListAvailableGroundStationsResponse);
+
+  // 指定した地上局を取得する。
+  rpc GetGroundStation(GetGroundStationRequest) returns (GetGroundStationResponse);
+
+  // 指定した衛星、地上局をもとに直近14日間のパスのリストを取得する。
+  rpc ListPasses(ListPassesRequest) returns (ListPassesResponse);
+
+  // 指定した衛星について、end_time が現在時刻以降のコンタクトのリストを取得する。
+  rpc ListUpcomingContacts(ListUpcomingContactsRequest) returns (ListUpcomingContactsResponse);
+
+  // 指定したコンタクトを取得する。
+  rpc GetContact(GetContactRequest) returns (GetContactResponse);
+
+  // 新しいコンタクトを作成する。
+  // 指定された AOS/LOS に該当するパスが存在しない場合は INVALID_ARGUMENT (3) が、
+  // すでに同じ衛星、地上局、時間帯でコンタクトが存在する場合は ALREADY_EXISTS (6) のエラーが返る。
+  rpc CreateContact(CreateContactRequest) returns (CreateContactResponse);
+
+  // 指定したコンタクトをキャンセルする。
+  // キャンセル不能な状態の場合は FAILED_PRECONDITION (9) のエラーが返る。
+  rpc CancelContact(CancelContactRequest) returns (CancelContactResponse);
+}
+
+message ListSatellitesRequest {}
+
+message ListSatellitesResponse {
+  // クライアントがアクセス可能な衛星のリスト
+  repeated aegs.clover.v1.Satellite satellites = 1;
+}
+
+message GetSatelliteRequest {
+  // 取得する衛星の ID
+  int64 satellite_id = 1;
+}
+
+message GetSatelliteResponse {
+  // 指定された ID に対応する衛星
+  aegs.clover.v1.Satellite satellite = 1;
+}
+
+message GetLatestTLERequest {
+  // TLE を取得する衛星の ID
+  int64 satellite_id = 1;
+}
+
+message GetLatestTLEResponse {
+  // 指定された衛星の最新の TLE 情報
+  aegs.clover.v1.TLERecord tle_record = 1;
+}
+
+message RegisterTLERequest {
+  // TLE を登録する衛星の ID
+  int64 satellite_id = 1;
+  // 登録する TLE
+  aegs.clover.v1.TLE tle = 2;
+}
+
+message RegisterTLEResponse {
+  // 登録された TLE の情報
+  aegs.clover.v1.TLERecord tle_record = 1;
+}
+
+message ListAvailableGroundStationsRequest {
+  // 利用可能な地上局を取得する衛星の ID
+  int64 satellite_id = 1;
+}
+
+message ListAvailableGroundStationsResponse {
+  // 指定された衛星で利用可能な地上局のリスト
+  repeated aegs.clover.v1.GroundStation ground_stations = 1;
+}
+
+message GetGroundStationRequest {
+  // 取得する地上局の ID
+  int64 ground_station_id = 1;
+}
+
+message GetGroundStationResponse {
+  // 指定された ID に対応する地上局
+  aegs.clover.v1.GroundStation ground_station = 1;
+}
+
+message ListPassesRequest {
+  // パス算出の対象とする衛星の ID
+  int64 satellite_id = 1;
+  // パス算出の対象とする地上局の ID のリスト
+  repeated int64 ground_station_ids = 2;
+}
+
+message ListPassesResponse {
+  // パスのリスト。
+  // リストは AOS 時刻の昇順でソートされている
+  repeated aegs.clover.v1.Pass passes = 1;
+}
+
+message ListUpcomingContactsRequest {
+  // コンタクトのリストを取得する対象の衛星 ID
+  int64 satellite_id = 1;
+}
+
+message ListUpcomingContactsResponse {
+  // 指定された衛星を対象とした現在時刻以降のコンタクトのリスト
+  repeated aegs.clover.v1.Contact contacts = 1;
+}
+
+message GetContactRequest {
+  // 取得するコンタクトの ID
+  int64 contact_id = 1;
+}
+
+message GetContactResponse {
+  // 指定された ID に対応するコンタクト
+  aegs.clover.v1.Contact contact = 1;
+}
+
+message CreateContactRequest {
+  // コンタクト対象の衛星の ID
+  int64 satellite_id = 1;
+  // コンタクトで使用する地上局の ID
+  int64 ground_station_id = 2;
+  // 作成するコンタクトの AOS 時刻
+  google.protobuf.Timestamp aos = 3;
+  // 作成するコンタクトの LOS 時刻
+  google.protobuf.Timestamp los = 4;
+}
+
+message CreateContactResponse {
+  // 作成されたコンタクト
+  aegs.clover.v1.Contact contact = 1;
+}
+
+message CancelContactRequest {
+  // キャンセルするコンタクトの ID
+  int64 contact_id = 1;
+}
+
+message CancelContactResponse {
+  // キャンセルされたコンタクト
+  aegs.clover.v1.Contact contact = 1;
+}

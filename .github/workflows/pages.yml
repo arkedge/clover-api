@@ -1,0 +1,60 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4.2.1
+
+      - uses: arduino/setup-protoc@v3.0.0
+
+      - name: Install protoc-gen-doc
+        run: |
+          mkdir "${GITHUB_WORKSPACE}/bin"
+          curl -sSfL "https://github.com/pseudomuto/protoc-gen-doc/releases/download/v${PROTOC_GEN_DOC_VERSION}/protoc-gen-doc_${PROTOC_GEN_DOC_VERSION}_linux_amd64.tar.gz" | tar -xzC "${GITHUB_WORKSPACE}/bin"
+          echo "${GITHUB_WORKSPACE}/bin" >> "$GITHUB_PATH"
+        env:
+          PROTOC_GEN_DOC_VERSION: "1.5.1"
+
+      - uses: peaceiris/actions-mdbook@v2.0.0
+        with:
+          mdbook-version: "0.4.40"
+
+      - name: Generate proto.md from proto files
+        run: protoc -I proto --doc_out=./docs --doc_opt=markdown,proto.md $(find proto -name "*.proto" | sort)
+
+      - run: mdbook build
+
+      - uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: book
+
+  deploy:
+    needs: build
+
+    if: github.ref_name	== 'main'
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/deploy-pages@v4.0.5
+        id: deployment

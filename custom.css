@@ -1,0 +1,7 @@
+:root {
+  --content-max-width: 960px;
+}
+
+table {
+  width: 100%;
+}

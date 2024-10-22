@@ -1,0 +1,133 @@
+syntax = "proto3";
+
+package aegs.clover.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// 衛星。
+message Satellite {
+  // 衛星の ID
+  int64 id = 1;
+  // 衛星の名前
+  string name = 2;
+}
+
+// 登録された TLE の情報。
+message TLERecord {
+  // TLE の ID
+  int64 id = 1;
+  // 登録された TLE
+  TLE tle = 2;
+  // TLE の登録日時
+  google.protobuf.Timestamp register_time = 3;
+}
+
+// TLE (Two-Line Elements)。
+message TLE {
+  // TLE の1行目
+  string line1 = 1;
+  // TLE の2行目
+  string line2 = 2;
+}
+
+// 地上局。
+message GroundStation {
+  // 地上局の ID
+  int64 id = 1;
+  // 地上局の名前
+  string name = 2;
+  // 地上局の位置
+  LatLngAlt location = 3;
+}
+
+// 緯度・経度・高度からなる位置情報。
+// パスの計算に使用される。
+message LatLngAlt {
+  // 緯度 [deg]
+  double latitude = 1;
+  // 経度 [deg]
+  double longitude = 2;
+  // 楕円体高 [meter]
+  double altitude = 3;
+}
+
+// コンタクトとして予約可能な衛星パス
+message Pass {
+  // 当該パスの衛星
+  Satellite satellite = 1;
+  // 当該パスの地上局
+  GroundStation ground_station = 2;
+  // 当該パスの AOS/LOS と最大仰角
+  PassDetails details = 3;
+}
+
+message PassDetails {
+  // AOS (Acquisition of Signal) 時刻
+  google.protobuf.Timestamp aos = 1;
+  // LOS (Loss of Signal) 時刻
+  google.protobuf.Timestamp los = 2;
+  // 最大仰角 [deg]
+  double max_elevation = 3;
+}
+
+// コンタクト。
+// Clover においては、予約されたパスを表す。
+message Contact {
+  // コンタクトの ID
+  int64 id = 1;
+  // コンタクト対象の衛星の ID
+  int64 satellite_id = 2;
+  // コンタクトで使用する地上局の ID
+  int64 ground_station_id = 3;
+  // コンタクトのステータス
+  Status status = 4;
+  // コンタクトの開始時刻。
+  // AOSに対してバッファを持たせた時刻が設定され、この時刻をもとに予約の排他制御が行われる
+  google.protobuf.Timestamp start_time = 5;
+  // コンタクトの終了時刻。
+  // LOSに対してバッファを持たせた時刻が設定され、この時刻をもとに予約の排他制御が行われる
+  google.protobuf.Timestamp end_time = 6;
+  // コンタクトの作成日時
+  google.protobuf.Timestamp create_time = 7;
+  // コンタクトの更新日時。
+  // 基本的にはステータスの変更時刻を表す
+  google.protobuf.Timestamp update_time = 8;
+  // リクエスト時の TLE に基づいて計算されたパスの詳細。
+  // GetContact の場合にのみ値が設定される。
+  // コンタクト時刻の前後にパスが見つからなかった場合は値が設定されない
+  PassDetails pass = 9;
+
+  enum Status {
+    // ステータスの値が設定されていない場合の値。
+    // この値が設定された場合は異常な状態であるため、アークエッジ・スペースの担当者に連絡すること
+    STATUS_UNSPECIFIED = 0;
+
+    // 局管理者の確認待ちの状態。
+    // コンタクトを予約した直後の初期状態。
+    // この状態から他の状態に遷移したあと、この状態に戻ることはない
+    STATUS_PENDING = 1;
+
+    // 局管理者に承認され、コンタクトの予約が有効な状態
+    STATUS_SCHEDULED = 2;
+
+    // 局管理者に拒否され、コンタクトの予約が無効な状態
+    // 他の状態に遷移しない終端状態
+    STATUS_REJECTED = 3;
+
+    // ユーザがコンタクトの予約をキャンセルした状態。
+    // 他の状態に遷移しない終端状態
+    STATUS_CANCELED = 4;
+
+    // コンタクトが実行中の状態。
+    // この状態になると、キャンセルできなくなる
+    STATUS_RUNNING = 5;
+
+    // コンタクトが完了した状態。
+    // 他の状態に遷移しない終端状態
+    STATUS_COMPLETED = 6;
+
+    // コンタクトが何らかの理由で失敗した状態。
+    // 他の状態に遷移しない終端状態
+    STATUS_FAILED = 7;
+  }
+}

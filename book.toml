@@ -1,0 +1,8 @@
+[book]
+title = "Clover API"
+authors = ["ArkEdge Space Inc."]
+language = "ja"
+src = "docs"
+
+[output.html]
+additional-css = ["custom.css"]
