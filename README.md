@@ -2,6 +2,8 @@
 
 アークエッジ・スペースの地上局予約サービス「Clover」の API 定義とドキュメンテーション。
 
+https://arkedge.github.io/clover-api/
+
 ## Development
 
 ### ディレクトリ構造
