@@ -51,7 +51,7 @@ message LatLngAlt {
   double altitude = 3;
 }
 
-// コンタクトとして予約可能な衛星パス
+// 衛星パス。
 message Pass {
   // 当該パスの衛星
   Satellite satellite = 1;
@@ -59,6 +59,8 @@ message Pass {
   GroundStation ground_station = 2;
   // 当該パスの AOS/LOS と最大仰角
   PassDetails details = 3;
+  // 当該パスがコンタクトとして予約可能かどうか
+  bool is_available = 4;
 }
 
 message PassDetails {
