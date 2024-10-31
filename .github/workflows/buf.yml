@@ -1,0 +1,32 @@
+name: Buf
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - buf.yaml
+      - proto/**
+      - .github/workflows/buf.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - buf.yaml
+      - proto/**
+      - .github/workflows/buf.yml
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: bufbuild/buf-action@v1.0.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
