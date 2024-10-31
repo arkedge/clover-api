@@ -1,0 +1,14 @@
+# For details on buf.yaml configuration, visit https://buf.build/docs/configuration/v2/buf-yaml
+version: v2
+modules:
+  - path: proto
+lint:
+  use:
+    - STANDARD
+    - COMMENTS
+  ignore_only:
+    COMMENT_MESSAGE:
+      - proto/aegs/clover/v1/clover_service.proto
+breaking:
+  use:
+    - FILE
