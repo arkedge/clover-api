@@ -11,5 +11,12 @@
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s+\\S+?:\\s*\"(?<currentValue>\\S+?)\""
       ]
     }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
   ]
 }
