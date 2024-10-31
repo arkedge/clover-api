@@ -63,6 +63,7 @@ message Pass {
   bool is_available = 4;
 }
 
+// パスの AOS/LOS 時刻と最大仰角といった詳細情報。
 message PassDetails {
   // AOS (Acquisition of Signal) 時刻
   google.protobuf.Timestamp aos = 1;
@@ -99,6 +100,7 @@ message Contact {
   // コンタクト時刻の前後にパスが見つからなかった場合は値が設定されない
   PassDetails pass = 9;
 
+  // コンタクトの状態。
   enum Status {
     // ステータスの値が設定されていない場合の値。
     // この値が設定された場合は異常な状態であるため、アークエッジ・スペースの担当者に連絡すること
