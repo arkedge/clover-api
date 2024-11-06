@@ -3,20 +3,14 @@ name: Documentation
 on:
   push:
     branches: ["main"]
-    paths:
-      - book.toml
-      - custom.css
-      - docs/**
-      - proto/**
-      - .github/workflows/docs.yml
+    paths-ignore:
+      - client-ui/**
+      - .github/workflows/client-ui.yml
   pull_request:
     branches: ["main"]
-    paths:
-      - book.toml
-      - custom.css
-      - docs/**
-      - proto/**
-      - .github/workflows/docs.yml
+    paths-ignore:
+      - client-ui/**
+      - .github/workflows/client-ui.yml
 
 jobs:
   build:
