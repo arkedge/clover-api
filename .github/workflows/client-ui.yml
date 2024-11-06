@@ -1,0 +1,60 @@
+name: Client UI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - client-ui/**
+      - .github/workflows/client-ui.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - client-ui/**
+      - .github/workflows/client-ui.yml
+
+defaults:
+  run:
+    working-directory: ./client-ui
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: pnpm/action-setup@v4.0.0
+        with:
+          package_json_file: client-ui/package.json
+
+      - uses: actions/setup-node@v4.1.0
+        with:
+          cache: pnpm
+          cache-dependency-path: client-ui/pnpm-lock.yaml
+          node-version-file: client-ui/.nvmrc
+
+      - run: pnpm install
+
+      - run: pnpm run lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: pnpm/action-setup@v4.0.0
+        with:
+          package_json_file: client-ui/package.json
+
+      - uses: actions/setup-node@v4.1.0
+        with:
+          cache: pnpm
+          cache-dependency-path: client-ui/pnpm-lock.yaml
+          node-version-file: client-ui/.nvmrc
+
+      - run: pnpm install
+
+      - run: pnpm run typecheck
