@@ -1,4 +1,4 @@
-name: Buf
+name: Protocol Buffers
 
 on:
   push:
@@ -7,17 +7,17 @@ on:
     paths:
       - buf.yaml
       - proto/**
-      - .github/workflows/buf.yml
+      - .github/workflows/proto.yml
   pull_request:
     branches:
       - main
     paths:
       - buf.yaml
       - proto/**
-      - .github/workflows/buf.yml
+      - .github/workflows/proto.yml
 
 jobs:
-  check:
+  buf:
     runs-on: ubuntu-latest
 
     permissions:
