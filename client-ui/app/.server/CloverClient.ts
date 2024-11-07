@@ -14,16 +14,26 @@ export class CloverClient {
     return response.satellites;
   }
 
-  async getSatellite(satelliteId: bigint | string) {
-    try {
-      satelliteId = BigInt(satelliteId);
-    } catch {
-      return null;
-    }
-
+  async getSatellite(satelliteId: bigint) {
     try {
       const response = await this.client.getSatellite({ satelliteId });
-      return response.satellite || null;
+      return response.satellite!;
+    } catch (err) {
+      if (err instanceof ConnectError && err.code === Code.NotFound) {
+        return null;
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  async getLatestTLE(satelliteId: bigint) {
+    try {
+      const response = await this.client.getLatestTLE({ satelliteId });
+      return {
+        tle: response.tleRecord!.tle!,
+        registerTime: response.tleRecord!.registerTime!.toDate(),
+      };
     } catch (err) {
       if (err instanceof ConnectError && err.code === Code.NotFound) {
         return null;
