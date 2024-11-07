@@ -1,25 +1,24 @@
+import { Alignment, Button, Navbar } from "@blueprintjs/core";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+import { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   Meta,
+  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
-
+import logo from "./assets/logo.svg";
 import "./tailwind.css";
 
+export const meta: MetaFunction = () => [
+  { title: "Clover UI - ArkEdge Space" },
+];
+
 export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
+  { rel: "icon", href: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -32,11 +31,35 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <HeaderNav />
         {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function HeaderNav() {
+  return (
+    <Navbar className="bp5-dark">
+      <div className="container mx-auto">
+        <Navbar.Group align={Alignment.LEFT}>
+          <Navbar.Heading>
+            <img
+              src={logo}
+              alt="logo"
+              className="inline-block h-6 w-6 align-top"
+            />{" "}
+            Clover UI
+          </Navbar.Heading>
+          <Navbar.Divider />
+          <NavLink to="/">
+            <Button minimal={true} icon="home" text="Home" />
+          </NavLink>
+        </Navbar.Group>
+      </div>
+    </Navbar>
   );
 }
 

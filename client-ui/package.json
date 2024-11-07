@@ -13,6 +13,8 @@
     "gen:proto": "buf generate"
   },
   "dependencies": {
+    "@blueprintjs/core": "^5.14.0",
+    "@blueprintjs/icons": "^5.14.0",
     "@bufbuild/protobuf": "^1.10.0",
     "@connectrpc/connect": "^1.6.1",
     "@connectrpc/connect-node": "^1.6.1",
