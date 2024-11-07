@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <style>
+    .triangle {
+      fill: #142a4e;
+    }
+    .a {
+      fill: #b5b5b6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .triangle {
+        fill: #ffffff;
+      }
+      .e {
+        fill: #9fa0a0;
+      }
+      .a {
+        fill: #c9c9ca;
+      }
+    }
+  </style>
+  <path class="triangle" d="M89.9,146.5L40,180h99.8L89.9,146.5z" />
+  <path
+    class="e"
+    d="M109.4,13.1v125.7l-19.5-13.1l0,0l-19.5,13.1V40.7L40.1,61.1v98.2l-19.4,13.2V46.8
+	l19.5-13.1L90.1,0.2L109.4,13.1z"
+  />
+  <path class="a" d="M89.9,27.6l69.4,46.6V46.7L89.9,0V27.6z" />
+  <path class="a" d="M89.9,76.9l69.4,46.8V96.1L89.9,49.3V76.9z" />
+  <path class="a" d="M89.9,125.7l69.4,46.8v-27.4l-69.4-47V125.7z" />
+  <path class="a" d="M89.9,0l19.5,13.1v125.7l-19.5-13.1V0z" />
+</svg>
