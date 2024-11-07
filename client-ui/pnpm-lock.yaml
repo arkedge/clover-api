@@ -15,14 +15,14 @@ importers:
         specifier: ^5.14.0
         version: 5.14.0(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@bufbuild/protobuf':
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^2.0.0
+        version: 2.2.2
       '@connectrpc/connect':
         specifier: ^1.6.1
-        version: 1.6.1(@bufbuild/protobuf@1.10.0)
+        version: 1.6.1(@bufbuild/protobuf@2.2.2)
       '@connectrpc/connect-node':
         specifier: ^1.6.1
-        version: 1.6.1(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))
+        version: 1.6.1(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.2.2))
       '@remix-run/node':
         specifier: ^2.13.1
         version: 2.13.1(typescript@5.6.3)
@@ -50,10 +50,10 @@ importers:
         version: 1.46.0
       '@bufbuild/protoc-gen-es':
         specifier: ^1.10.0
-        version: 1.10.0(@bufbuild/protobuf@1.10.0)
+        version: 1.10.0(@bufbuild/protobuf@2.2.2)
       '@connectrpc/protoc-gen-connect-es':
         specifier: ^1.6.1
-        version: 1.6.1(@bufbuild/protoc-gen-es@1.10.0(@bufbuild/protobuf@1.10.0))(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))
+        version: 1.6.1(@bufbuild/protoc-gen-es@1.10.0(@bufbuild/protobuf@2.2.2))(@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.2.2))
       '@remix-run/dev':
         specifier: ^2.13.1
         version: 2.13.1(@remix-run/react@2.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(@remix-run/serve@2.13.1(typescript@5.6.3))(@types/node@22.9.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.9.0))
@@ -334,6 +334,9 @@ packages:
 
   '@bufbuild/protobuf@1.10.0':
     resolution: {integrity: sha512-QDdVFLoN93Zjg36NoQPZfsVH9tZew7wKDKyV5qRdj8ntT4wQCOradQjRaTdwMhWUYsgKsvCINKKm87FdEk96Ag==}
+
+  '@bufbuild/protobuf@2.2.2':
+    resolution: {integrity: sha512-UNtPCbrwrenpmrXuRwn9jYpPoweNXj8X5sMvYgsqYyaH8jQ6LfUJSk3dJLnBK+6sfYPrF4iAIo5sd5HQ+tg75A==}
 
   '@bufbuild/protoc-gen-es@1.10.0':
     resolution: {integrity: sha512-zBYBsVT/ul4uZb6F+kD7/k4sWNHVVbEPfJwKi0FDr+9VJo8MKIofI6pkr5ksBLr4fi/74r+e/75Xi/0clL5dXg==}
@@ -3972,11 +3975,13 @@ snapshots:
 
   '@bufbuild/protobuf@1.10.0': {}
 
-  '@bufbuild/protoc-gen-es@1.10.0(@bufbuild/protobuf@1.10.0)':
+  '@bufbuild/protobuf@2.2.2': {}
+
+  '@bufbuild/protoc-gen-es@1.10.0(@bufbuild/protobuf@2.2.2)':
     dependencies:
       '@bufbuild/protoplugin': 1.10.0
     optionalDependencies:
-      '@bufbuild/protobuf': 1.10.0
+      '@bufbuild/protobuf': 2.2.2
     transitivePeerDependencies:
       - supports-color
 
@@ -3988,23 +3993,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@connectrpc/connect-node@1.6.1(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))':
+  '@connectrpc/connect-node@1.6.1(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.2.2))':
     dependencies:
-      '@bufbuild/protobuf': 1.10.0
-      '@connectrpc/connect': 1.6.1(@bufbuild/protobuf@1.10.0)
+      '@bufbuild/protobuf': 2.2.2
+      '@connectrpc/connect': 1.6.1(@bufbuild/protobuf@2.2.2)
       undici: 5.28.4
 
-  '@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0)':
+  '@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.2.2)':
     dependencies:
-      '@bufbuild/protobuf': 1.10.0
+      '@bufbuild/protobuf': 2.2.2
 
-  '@connectrpc/protoc-gen-connect-es@1.6.1(@bufbuild/protoc-gen-es@1.10.0(@bufbuild/protobuf@1.10.0))(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))':
+  '@connectrpc/protoc-gen-connect-es@1.6.1(@bufbuild/protoc-gen-es@1.10.0(@bufbuild/protobuf@2.2.2))(@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.2.2))':
     dependencies:
       '@bufbuild/protobuf': 1.10.0
       '@bufbuild/protoplugin': 1.10.0
     optionalDependencies:
-      '@bufbuild/protoc-gen-es': 1.10.0(@bufbuild/protobuf@1.10.0)
-      '@connectrpc/connect': 1.6.1(@bufbuild/protobuf@1.10.0)
+      '@bufbuild/protoc-gen-es': 1.10.0(@bufbuild/protobuf@2.2.2)
+      '@connectrpc/connect': 1.6.1(@bufbuild/protobuf@2.2.2)
     transitivePeerDependencies:
       - supports-color
 
