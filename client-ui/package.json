@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.46.0",
-    "@bufbuild/protoc-gen-es": "^1.10.0",
+    "@bufbuild/protoc-gen-es": "^2.0.0",
     "@connectrpc/protoc-gen-connect-es": "^1.6.1",
     "@remix-run/dev": "^2.13.1",
     "@types/react": "^18.2.20",
