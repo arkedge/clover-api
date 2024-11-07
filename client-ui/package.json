@@ -12,6 +12,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@bufbuild/protobuf": "^1.10.0",
+    "@connectrpc/connect": "^1.6.1",
+    "@connectrpc/connect-node": "^1.6.1",
     "@remix-run/node": "^2.13.1",
     "@remix-run/react": "^2.13.1",
     "@remix-run/serve": "^2.13.1",
@@ -20,6 +23,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@bufbuild/buf": "^1.46.0",
+    "@bufbuild/protoc-gen-es": "^1.10.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.6.1",
     "@remix-run/dev": "^2.13.1",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
@@ -36,6 +42,7 @@
     "postcss": "^8.4.38",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
+    "protoc-gen-es^1.0.0": "link:@bufbuild/protoc-gen-es^1.0.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.1.6",
     "vite": "^5.1.0",
