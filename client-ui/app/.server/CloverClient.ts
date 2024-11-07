@@ -1,5 +1,10 @@
+import { toJson } from "@bufbuild/protobuf";
 import { Client, Code, ConnectError, createClient } from "@connectrpc/connect";
-import { CloverService } from "~/gen/aegs/clover/v1/clover_service_connect";
+import { CloverService } from "~/gen/aegs/clover/v1/clover_service_pb";
+import {
+  SatelliteSchema,
+  TLERecordSchema,
+} from "~/gen/aegs/clover/v1/models_pb";
 import { cloverTransport } from "./grpc";
 
 export class CloverClient {
@@ -11,13 +16,15 @@ export class CloverClient {
 
   async listSatellites() {
     const response = await this.client.listSatellites({});
-    return response.satellites;
+    return response.satellites.map((satellite) =>
+      toJson(SatelliteSchema, satellite),
+    );
   }
 
   async getSatellite(satelliteId: bigint) {
     try {
       const response = await this.client.getSatellite({ satelliteId });
-      return response.satellite!;
+      return toJson(SatelliteSchema, response.satellite!);
     } catch (err) {
       if (err instanceof ConnectError && err.code === Code.NotFound) {
         return null;
@@ -30,10 +37,7 @@ export class CloverClient {
   async getLatestTLE(satelliteId: bigint) {
     try {
       const response = await this.client.getLatestTLE({ satelliteId });
-      return {
-        tle: response.tleRecord!.tle!,
-        registerTime: response.tleRecord!.registerTime!.toDate(),
-      };
+      return toJson(TLERecordSchema, response.tleRecord!);
     } catch (err) {
       if (err instanceof ConnectError && err.code === Code.NotFound) {
         return null;

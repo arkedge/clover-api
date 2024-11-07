@@ -6,7 +6,6 @@ inputs:
 plugins:
   - local: protoc-gen-es
     out: app/gen
-    opt: target=ts
-  - local: protoc-gen-connect-es
-    out: app/gen
-    opt: target=ts
+    opt:
+      - target=ts
+      - json_types=true

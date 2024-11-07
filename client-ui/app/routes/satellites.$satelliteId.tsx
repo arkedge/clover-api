@@ -27,7 +27,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     throw new Response(null, { status: 404, statusText: "Not Found" });
   }
 
-  const tleRecord = await client.getLatestTLE(satellite.id);
+  const tleRecord = await client.getLatestTLE(satelliteId);
 
   return json({ satellite, tleRecord });
 };
@@ -47,9 +47,9 @@ export default function SatelliteDetailPage() {
         {tleRecord ? (
           <SectionCard>
             <Pre>
-              {tleRecord.tle.line1}
+              {tleRecord.tle!.line1}
               <br />
-              {tleRecord.tle.line2}
+              {tleRecord.tle!.line2}
             </Pre>
             <p className="bp5-text-muted mt-4">
               Registered: {tleRecord.registerTime}
