@@ -14,7 +14,6 @@ function createCloverTransport() {
 
   return createGrpcTransport({
     baseUrl: CLOVER_BASE_URL,
-    httpVersion: "2",
     nodeOptions: {
       cert: CLOVER_CLIENT_CERT,
       key: CLOVER_CLIENT_KEY,
