@@ -1,4 +1,5 @@
 import { toJson } from "@bufbuild/protobuf";
+import { timestampFromDate } from "@bufbuild/protobuf/wkt";
 import { Client, Code, ConnectError, createClient } from "@connectrpc/connect";
 import { CloverService } from "~/gen/aegs/clover/v1/clover_service_pb";
 import {
@@ -70,6 +71,21 @@ export class CloverClient {
   async listUpcomingContacts(satelliteId: bigint) {
     const response = await this.client.listUpcomingContacts({ satelliteId });
     return response.contacts.map((contact) => toJson(ContactSchema, contact));
+  }
+
+  async createContact(
+    satelliteId: bigint,
+    groundStationId: bigint,
+    aos: Date,
+    los: Date,
+  ) {
+    const response = await this.client.createContact({
+      satelliteId,
+      groundStationId,
+      aos: timestampFromDate(aos),
+      los: timestampFromDate(los),
+    });
+    return toJson(ContactSchema, response.contact!);
   }
 
   async listPasses(satelliteId: bigint, groundStationIds: bigint[]) {
