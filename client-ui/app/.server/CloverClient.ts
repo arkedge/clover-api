@@ -50,6 +50,14 @@ export class CloverClient {
     }
   }
 
+  async registerTLE(satelliteId: bigint, line1: string, line2: string) {
+    const response = await this.client.registerTLE({
+      satelliteId,
+      tle: { line1, line2 },
+    });
+    return toJson(TLERecordSchema, response.tleRecord!);
+  }
+
   async listAvailableGroundStations(satelliteId: bigint) {
     const response = await this.client.listAvailableGroundStations({
       satelliteId,

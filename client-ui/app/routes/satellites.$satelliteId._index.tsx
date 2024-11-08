@@ -1,5 +1,6 @@
 import {
   Breadcrumbs,
+  Button,
   Callout,
   HTMLTable,
   Intent,
@@ -9,7 +10,7 @@ import {
   Tag,
 } from "@blueprintjs/core";
 import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";
 import { ContactStatusTag } from "~/components/ContactStatusTag";
@@ -70,10 +71,17 @@ export default function SatelliteDetailPage() {
 }
 
 function TLESection() {
-  const { tleRecord } = useLoaderData<typeof loader>();
+  const { satellite, tleRecord } = useLoaderData<typeof loader>();
 
   return (
-    <Section title="TLE">
+    <Section
+      title="TLE"
+      rightElement={
+        <Link to={`/satellites/${satellite.id}/tle`}>
+          <Button minimal={true} intent={Intent.PRIMARY} text="Update" />
+        </Link>
+      }
+    >
       {tleRecord ? (
         <SectionCard>
           <Pre>
