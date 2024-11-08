@@ -2,6 +2,8 @@ import { toJson } from "@bufbuild/protobuf";
 import { Client, Code, ConnectError, createClient } from "@connectrpc/connect";
 import { CloverService } from "~/gen/aegs/clover/v1/clover_service_pb";
 import {
+  ContactSchema,
+  GroundStationSchema,
   SatelliteSchema,
   TLERecordSchema,
 } from "~/gen/aegs/clover/v1/models_pb";
@@ -45,5 +47,19 @@ export class CloverClient {
         throw err;
       }
     }
+  }
+
+  async listAvailableGroundStations(satelliteId: bigint) {
+    const response = await this.client.listAvailableGroundStations({
+      satelliteId,
+    });
+    return response.groundStations.map((groundStation) =>
+      toJson(GroundStationSchema, groundStation),
+    );
+  }
+
+  async listUpcomingContacts(satelliteId: bigint) {
+    const response = await this.client.listUpcomingContacts({ satelliteId });
+    return response.contacts.map((contact) => toJson(ContactSchema, contact));
   }
 }
