@@ -9,6 +9,8 @@ import {
   HTMLTable,
   InputGroup,
   Intent,
+  NonIdealState,
+  NonIdealStateIconSize,
   Pre,
   Section,
   SectionCard,
@@ -89,9 +91,13 @@ export const action = async ({ params, request }: LoaderFunctionArgs) => {
 
   const client = new CloverClient();
   try {
-    await client.createContact(satelliteId, groundStationId, aos, los);
-    // TODO: コンタクト詳細ページを作ったらリダイレクト先を変更する
-    return redirect(`/satellites/${satelliteId}`);
+    const contact = await client.createContact(
+      satelliteId,
+      groundStationId,
+      aos,
+      los,
+    );
+    return redirect(`/contacts/${contact.id}`);
   } catch (err) {
     if (
       err instanceof ConnectError &&
@@ -163,7 +169,7 @@ function ContactsSection() {
   return (
     <Section title="Upcoming Contacts">
       {contacts.length ? (
-        <HTMLTable striped={true} className="w-full">
+        <HTMLTable striped={true} interactive={true} className="w-full">
           <thead>
             <tr>
               <th>ID</th>
@@ -175,8 +181,14 @@ function ContactsSection() {
           </thead>
           <tbody>
             {contacts.map((contact) => (
-              <tr key={contact.id}>
-                <td>{contact.id}</td>
+              <tr key={contact.id} className="relative">
+                <td>
+                  <Link
+                    to={`/contacts/${contact.id}`}
+                    className="absolute inset-0"
+                  />
+                  {contact.id}
+                </td>
                 <td>
                   {
                     groundStations.find(
@@ -194,7 +206,13 @@ function ContactsSection() {
           </tbody>
         </HTMLTable>
       ) : (
-        <Callout intent={Intent.WARNING}>No upcoming contacts.</Callout>
+        <NonIdealState
+          layout="horizontal"
+          icon="issue"
+          iconSize={NonIdealStateIconSize.SMALL}
+          title="No upcoming contacts."
+          className="my-3"
+        />
       )}
     </Section>
   );
@@ -241,7 +259,9 @@ function PassesSection() {
                 </td>
                 <td>
                   {!pass.isAvailable ? (
-                    <Tag intent={Intent.DANGER}>Unavailable</Tag>
+                    <Tag intent={Intent.DANGER} minimal={true}>
+                      Unavailable
+                    </Tag>
                   ) : null}
                 </td>
               </tr>

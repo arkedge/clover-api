@@ -20,7 +20,7 @@ export default function Index() {
 
   return (
     <main className="container mx-auto space-y-6 py-8">
-      <Breadcrumbs items={[{ href: "/", icon: "home", text: "Home" }]} />
+      <Breadcrumbs items={[{ icon: "home", text: "Home" }]} />
 
       <Section title="Satellites">
         <SectionCard padded={false}>

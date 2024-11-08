@@ -68,9 +68,27 @@ export class CloverClient {
     );
   }
 
+  async getGroundStation(groundStationId: bigint) {
+    const response = await this.client.getGroundStation({ groundStationId });
+    return toJson(GroundStationSchema, response.groundStation!);
+  }
+
   async listUpcomingContacts(satelliteId: bigint) {
     const response = await this.client.listUpcomingContacts({ satelliteId });
     return response.contacts.map((contact) => toJson(ContactSchema, contact));
+  }
+
+  async getContact(contactId: bigint) {
+    try {
+      const response = await this.client.getContact({ contactId });
+      return toJson(ContactSchema, response.contact!);
+    } catch (err) {
+      if (err instanceof ConnectError && err.code === Code.NotFound) {
+        return null;
+      } else {
+        throw err;
+      }
+    }
   }
 
   async createContact(
