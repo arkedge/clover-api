@@ -1,4 +1,10 @@
-import { Card, CardList, Section, SectionCard } from "@blueprintjs/core";
+import {
+  Breadcrumbs,
+  Card,
+  CardList,
+  Section,
+  SectionCard,
+} from "@blueprintjs/core";
 import { ChevronRight } from "@blueprintjs/icons";
 import { json, Link, useLoaderData } from "@remix-run/react";
 import { CloverClient } from "~/.server/CloverClient";
@@ -13,7 +19,9 @@ export default function Index() {
   const { satellites } = useLoaderData<typeof loader>();
 
   return (
-    <main className="container mx-auto py-8">
+    <main className="container mx-auto space-y-6 py-8">
+      <Breadcrumbs items={[{ href: "/", icon: "home", text: "Home" }]} />
+
       <Section title="Satellites">
         <SectionCard padded={false}>
           <CardList>

@@ -1,6 +1,6 @@
 import {
+  Breadcrumbs,
   Callout,
-  H1,
   HTMLTable,
   Intent,
   Pre,
@@ -55,7 +55,13 @@ export default function SatelliteDetailPage() {
 
   return (
     <main className="container mx-auto space-y-6 py-8">
-      <H1>{satellite.name}</H1>
+      <Breadcrumbs
+        items={[
+          { href: "/", icon: "home", text: "Home" },
+          { icon: "satellite", text: satellite.name },
+        ]}
+      />
+
       <TLESection />
       <ContactsSection />
       <PassesSection />
