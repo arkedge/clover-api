@@ -4,6 +4,7 @@ import { CloverService } from "~/gen/aegs/clover/v1/clover_service_pb";
 import {
   ContactSchema,
   GroundStationSchema,
+  PassSchema,
   SatelliteSchema,
   TLERecordSchema,
 } from "~/gen/aegs/clover/v1/models_pb";
@@ -61,5 +62,13 @@ export class CloverClient {
   async listUpcomingContacts(satelliteId: bigint) {
     const response = await this.client.listUpcomingContacts({ satelliteId });
     return response.contacts.map((contact) => toJson(ContactSchema, contact));
+  }
+
+  async listPasses(satelliteId: bigint, groundStationIds: bigint[]) {
+    const response = await this.client.listPasses({
+      satelliteId,
+      groundStationIds,
+    });
+    return response.passes.map((pass) => toJson(PassSchema, pass));
   }
 }
