@@ -106,6 +106,11 @@ export class CloverClient {
     return toJson(ContactSchema, response.contact!);
   }
 
+  async cancelContact(contactId: bigint) {
+    const response = await this.client.cancelContact({ contactId });
+    return toJson(ContactSchema, response.contact!);
+  }
+
   async listPasses(satelliteId: bigint, groundStationIds: bigint[]) {
     const response = await this.client.listPasses({
       satelliteId,

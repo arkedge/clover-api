@@ -1,16 +1,24 @@
 import {
   Breadcrumbs,
+  Button,
   Card,
   CardList,
   EntityTitle,
   H4,
+  Intent,
   Section,
   SectionCard,
   Tag,
 } from "@blueprintjs/core";
 import { Add, Updated } from "@blueprintjs/icons";
+import { Code, ConnectError } from "@connectrpc/connect";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
-import { MetaFunction, useLoaderData } from "@remix-run/react";
+import {
+  Form,
+  MetaFunction,
+  useLoaderData,
+  useNavigation,
+} from "@remix-run/react";
 import assert from "node:assert";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";
@@ -43,6 +51,37 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
   { title: `Contact ${data?.contact.id}` },
 ];
+
+export const action = async ({ params }: LoaderFunctionArgs) => {
+  invariant(params.contactId, "Missing contactId param");
+  let contactId: bigint;
+  try {
+    contactId = BigInt(params.contactId);
+  } catch {
+    throw new Response(null, { status: 404, statusText: "Not Found" });
+  }
+
+  const client = new CloverClient();
+  try {
+    await client.cancelContact(contactId);
+  } catch (err) {
+    if (err instanceof ConnectError) {
+      switch (err.code) {
+        case Code.NotFound:
+          throw new Response(null, { status: 404, statusText: "Not Found" });
+        case Code.FailedPrecondition:
+          throw new Response(err.message, {
+            status: 400,
+            statusText: "Failed Precondition",
+          });
+      }
+    } else {
+      throw err;
+    }
+  }
+
+  return null;
+};
 
 export default function ContactDetailPage() {
   const { contact, satellite, groundStation } = useLoaderData<typeof loader>();
@@ -89,6 +128,9 @@ export default function ContactDetailPage() {
               <Updated title="Update Time" /> {contact.updateTime}
             </li>
           </ul>
+          {["STATUS_PENDING", "STATUS_SCHEDULED"].includes(contact.status!) ? (
+            <CancelButton />
+          ) : null}
         </SectionCard>
       </Section>
 
@@ -118,5 +160,21 @@ export default function ContactDetailPage() {
         </Section>
       ) : null}
     </main>
+  );
+}
+
+function CancelButton() {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  return (
+    <Form method="post">
+      <Button
+        type="submit"
+        text="Cancel"
+        intent={Intent.DANGER}
+        disabled={isSubmitting}
+      />
+    </Form>
   );
 }
