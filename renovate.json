@@ -1,7 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>arkedge/renovate-config"
+    "local>arkedge/renovate-config",
+    "schedule:earlyMondays"
   ],
   "customManagers": [
     {
