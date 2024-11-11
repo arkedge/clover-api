@@ -10,6 +10,7 @@ Clover API は [Protocol Buffers](https://protobuf.dev/) で定義されてい�
 しかし、ここでは特定のプログラミング言語を用いるのではなく、前節に引き続き [grpcurl](https://github.com/fullstorydev/grpcurl) を用いて説明します。
 grpcurl は、コマンドラインツールとしてシンプルなインタフェースを備えており、特定のプログラミング言語の文法やエコシステムの前提知識なしに利用できるからです。
 ユーザインタフェースの作成や自動化など、より高度な形で利用する場合は、使用する言語に応じた gRPC クライアントの開発方法を調べてみてください。
+[クライアント実装例](client-example.md)の節では、Clover UI という参考実装を紹介しています。
 
 使用した grpcurl のバージョンは以下のとおりです。
 
@@ -24,7 +25,7 @@ grpcurl 1.9.1
 - TLS 証明書のパス: `./cert.pem`
 - 秘密鍵のパス: `./secret.pem`
 
-本説の説明は、Clover API の最低限の使い方を説明することを目的としているため、より詳しいインタフェースについては API リファレンスに相当する [Protocol Document](proto.md) を参照してください。
+本説の説明は、Clover API の最低限の使い方を説明することを目的としているため、より詳しいインタフェースについては API リファレンスに相当する [Protocol Documentation](proto.md) を参照してください。
 
 ## TLE の登録
 
@@ -220,4 +221,4 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 ```
 
 以上が、Clover API の基本的な使い方です。
-その他のメソッドや、各パラメータの詳細は [Protocol Document](proto.md) を参照してください。
+その他のメソッドや、各パラメータの詳細は [Protocol Documentation](proto.md) を参照してください。
