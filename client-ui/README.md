@@ -1,40 +1,50 @@
-# Welcome to Remix!
+# Clover UI
 
-- 📖 [Remix docs](https://remix.run/docs)
+Clover API クライアントの GUI 参考実装。
 
-## Development
+## 技術スタック
 
-Run the dev server:
+- gRPC クライアント: [Protobuf-ES](https://github.com/bufbuild/protobuf-es) & [Connect-ES](https://github.com/connectrpc/connect-es)
+- Web フレームワーク: [Remix](https://remix.run/docs)
+- UI ライブラリ: [Blueprint](https://blueprintjs.com/docs/) & [Tailwind CSS](https://tailwindcss.com/docs/)
 
-```shellscript
-npm run dev
+## 開発
+
+### 依存パッケージのインストール
+
+パッケージマネージャとして [pnpm](https://pnpm.io/) を利用しています。
+
+```console
+$ corepack enable pnpm
+$ pnpm install
 ```
 
-## Deployment
+### `.env` ファイルの作成
 
-First, build your app for production:
-
-```sh
-npm run build
+```console
+$ cp .env.sample .env
 ```
 
-Then run the app in production mode:
+Clover のエンドポイントと認証情報を設定します。
+詳細は[ドキュメントの「認証」の節](https://arkedge.github.io/clover-api/authentication.html)を参照してください。
 
-```sh
-npm start
+### 開発サーバの起動
+
+```console
+$ pnpm run dev
 ```
 
-Now you'll need to pick a host to deploy it to.
+### クライアントコードの生成
 
-### DIY
+Protocol Buffers 定義から TypeScript のコードを [`app/gen`](app/gen) 以下に生成します。
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+```console
+$ pnpm run gen:proto
+```
 
-Make sure to deploy the output of `npm run build`
+## デプロイ
 
-- `build/server`
-- `build/client`
+このディレクトリの [Dockerfile](Dockerfile) からビルドできるコンテナイメージは本番環境で使用できます。
+GitHub Actions でビルドしたイメージを GitHub Container registry より配布しています。
 
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+https://github.com/arkedge/clover-api/pkgs/container/clover-ui
