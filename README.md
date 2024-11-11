@@ -4,14 +4,16 @@
 
 https://arkedge.github.io/clover-api/
 
-## Development
+## 開発者向け情報
 
-### ディレクトリ構造
+### ディレクトリ構成
 
 - [`docs`](docs)
   - mdBook で生成するドキュメントページの元となるマークダウンファイル群。
 - [`proto`](proto)
   - Clover の Protocol Buffers ファイル。
+- [`client-ui`](client-ui)
+  - API クライアントの参考実装（Clover UI）のソースコード。
 
 ### ドキュメントページの生成
 
@@ -42,3 +44,7 @@ $ mdbook build
 ```console
 $ mdbook serve --open
 ```
+
+### Clover UI
+
+[client-ui/README.md](client-ui/README.md) を参照してください。
