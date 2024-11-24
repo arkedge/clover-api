@@ -22,7 +22,7 @@ importers:
         version: 2.0.0-rc.3(@bufbuild/protobuf@2.2.2)
       '@connectrpc/connect-node':
         specifier: ^2.0.0-rc.3
-        version: 2.0.0-rc.3(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-rc.3(@bufbuild/protobuf@2.2.2))
+        version: 2.0.0(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-rc.3(@bufbuild/protobuf@2.2.2))
       '@remix-run/node':
         specifier: ^2.13.1
         version: 2.14.0(typescript@5.6.3)
@@ -342,12 +342,12 @@ packages:
   '@bufbuild/protoplugin@2.2.2':
     resolution: {integrity: sha512-EKKrjBsA/F2l502PPWfmvx//qRJpOXpyDhwFOYSbwRYfqzEUuuNSb1A+YGE7iDxoEqxwo+len/CJny29iP1ESg==}
 
-  '@connectrpc/connect-node@2.0.0-rc.3':
-    resolution: {integrity: sha512-lJEuqkpCfkELX0G8HFClLxh+3/lbwAC8EylXMTCL1+XUTwLXYc4DFORTmqCNObp723fW2mPlGDOpWy5t9m/fYg==}
+  '@connectrpc/connect-node@2.0.0':
+    resolution: {integrity: sha512-DoI5T+SUvlS/8QBsxt2iDoUg15dSxqhckegrgZpWOtADtmGohBIVbx1UjtWmjLBrP4RdD0FeBw+XyRUSbpKnJQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       '@bufbuild/protobuf': ^2.2.0
-      '@connectrpc/connect': 2.0.0-rc.3
+      '@connectrpc/connect': 2.0.0
 
   '@connectrpc/connect@2.0.0-rc.3':
     resolution: {integrity: sha512-ARBt64yEyKbanyRETTjcjJuHr2YXorzQo0etyS5+P6oSeW8xEuzajA9g+zDnMcj1hlX2dQE93foIWQGfpru7gQ==}
@@ -3973,7 +3973,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@connectrpc/connect-node@2.0.0-rc.3(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-rc.3(@bufbuild/protobuf@2.2.2))':
+  '@connectrpc/connect-node@2.0.0(@bufbuild/protobuf@2.2.2)(@connectrpc/connect@2.0.0-rc.3(@bufbuild/protobuf@2.2.2))':
     dependencies:
       '@bufbuild/protobuf': 2.2.2
       '@connectrpc/connect': 2.0.0-rc.3(@bufbuild/protobuf@2.2.2)
