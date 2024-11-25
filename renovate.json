@@ -15,6 +15,12 @@
   ],
   "packageRules": [
     {
+      "matchSourceUrls": [
+        "https://github.com/connectrpc/connect-es"
+      ],
+      "groupName": "connect-es monorepo"
+    },
+    {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
