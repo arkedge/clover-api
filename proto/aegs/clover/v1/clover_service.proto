@@ -43,6 +43,10 @@ service CloverService {
   // 指定したコンタクトをキャンセルする。
   // キャンセル不能な状態の場合は FAILED_PRECONDITION (9) のエラーが返る。
   rpc CancelContact(CancelContactRequest) returns (CancelContactResponse);
+
+  // 指定したコンタクトで得られたファイルのリストを取得する。
+  // コンタクトがファイルを生成するよう設定されていない場合は NOT_FOUND (5) のエラーが返る。
+  rpc ListContactBlobFiles(ListContactBlobFilesRequest) returns (ListContactBlobFilesResponse);
 }
 
 message ListSatellitesRequest {}
@@ -161,4 +165,14 @@ message CancelContactRequest {
 message CancelContactResponse {
   // キャンセルされたコンタクト
   aegs.clover.v1.Contact contact = 1;
+}
+
+message ListContactBlobFilesRequest {
+  // ファイルのリストを取得するコンタクトの ID
+  int64 contact_id = 1;
+}
+
+message ListContactBlobFilesResponse {
+  // コンタクトで生成されたファイルのリスト
+  repeated aegs.clover.v1.BlobFile blob_files = 1;
 }

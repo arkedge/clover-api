@@ -135,3 +135,13 @@ message Contact {
     STATUS_FAILED = 7;
   }
 }
+
+// URL からダウンロード可能なファイル。
+message BlobFile {
+  // ファイルをダウンロードするための URL
+  string url = 1;
+  // ファイル名
+  string filename = 2;
+  // ファイルのサイズ [byte]
+  int64 size = 3;
+}
