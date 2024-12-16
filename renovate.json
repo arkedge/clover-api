@@ -21,6 +21,12 @@
       "groupName": "connect-es monorepo"
     },
     {
+      "matchSourceUrls": [
+        "https://github.com/palantir/blueprint"
+      ],
+      "groupName": "blueprint monorepo"
+    },
+    {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
