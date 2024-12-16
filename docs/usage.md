@@ -179,7 +179,7 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 ```json
 {
   "contact": {
-    "id": "78",
+    "id": "200",
     "satelliteId": "2",
     "groundStationId": "1",
     "status": "STATUS_SCHEDULED",
