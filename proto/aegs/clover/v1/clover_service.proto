@@ -32,6 +32,9 @@ service CloverService {
   // 指定した衛星について、end_time が現在時刻以降のコンタクトのリストを取得する。
   rpc ListUpcomingContacts(ListUpcomingContactsRequest) returns (ListUpcomingContactsResponse);
 
+  // 指定した衛星について、end_time が過去14日以内のコンタクトのリストを取得する。
+  rpc ListPastContacts(ListPastContactsRequest) returns (ListPastContactsResponse);
+
   // 指定したコンタクトを取得する。
   rpc GetContact(GetContactRequest) returns (GetContactResponse);
 
@@ -128,6 +131,16 @@ message ListUpcomingContactsRequest {
 
 message ListUpcomingContactsResponse {
   // 指定された衛星を対象とした現在時刻以降のコンタクトのリスト
+  repeated aegs.clover.v1.Contact contacts = 1;
+}
+
+message ListPastContactsRequest {
+  // コンタクトのリストを取得する対象の衛星 ID
+  int64 satellite_id = 1;
+}
+
+message ListPastContactsResponse {
+  // 指定された衛星を対象とした過去14日以内のコンタクトのリスト
   repeated aegs.clover.v1.Contact contacts = 1;
 }
 
