@@ -29,7 +29,7 @@ import {
 import { useState } from "react";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";
-import { ContactStatusTag } from "~/components/ContactStatusTag";
+import { ContactTable } from "~/components/ContactTable";
 import { PassJson } from "~/gen/aegs/clover/v1/models_pb";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
@@ -169,42 +169,7 @@ function ContactsSection() {
   return (
     <Section title="Upcoming Contacts">
       {contacts.length ? (
-        <HTMLTable striped={true} interactive={true} className="w-full">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Ground Station</th>
-              <th>Start Time</th>
-              <th>End Time</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contacts.map((contact) => (
-              <tr key={contact.id} className="relative">
-                <td>
-                  <Link
-                    to={`/contacts/${contact.id}`}
-                    className="absolute inset-0"
-                  />
-                  {contact.id}
-                </td>
-                <td>
-                  {
-                    groundStations.find(
-                      (gs) => gs.id === contact.groundStationId,
-                    )?.name
-                  }
-                </td>
-                <td>{contact.startTime}</td>
-                <td>{contact.endTime}</td>
-                <td>
-                  <ContactStatusTag status={contact.status!} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </HTMLTable>
+        <ContactTable contacts={contacts} groundStations={groundStations} />
       ) : (
         <NonIdealState
           layout="horizontal"
