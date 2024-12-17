@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file aegs/clover/v1/models.proto.
  */
 export const file_aegs_clover_v1_models: GenFile = /*@__PURE__*/
-  fileDesc("ChthZWdzL2Nsb3Zlci92MS9tb2RlbHMucHJvdG8SDmFlZ3MuY2xvdmVyLnYxIiUKCVNhdGVsbGl0ZRIKCgJpZBgBIAEoAxIMCgRuYW1lGAIgASgJImwKCVRMRVJlY29yZBIKCgJpZBgBIAEoAxIgCgN0bGUYAiABKAsyEy5hZWdzLmNsb3Zlci52MS5UTEUSMQoNcmVnaXN0ZXJfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIwoDVExFEg0KBWxpbmUxGAEgASgJEg0KBWxpbmUyGAIgASgJIlYKDUdyb3VuZFN0YXRpb24SCgoCaWQYASABKAMSDAoEbmFtZRgCIAEoCRIrCghsb2NhdGlvbhgDIAEoCzIZLmFlZ3MuY2xvdmVyLnYxLkxhdExuZ0FsdCJCCglMYXRMbmdBbHQSEAoIbGF0aXR1ZGUYASABKAESEQoJbG9uZ2l0dWRlGAIgASgBEhAKCGFsdGl0dWRlGAMgASgBIq8BCgRQYXNzEiwKCXNhdGVsbGl0ZRgBIAEoCzIZLmFlZ3MuY2xvdmVyLnYxLlNhdGVsbGl0ZRI1Cg5ncm91bmRfc3RhdGlvbhgCIAEoCzIdLmFlZ3MuY2xvdmVyLnYxLkdyb3VuZFN0YXRpb24SLAoHZGV0YWlscxgDIAEoCzIbLmFlZ3MuY2xvdmVyLnYxLlBhc3NEZXRhaWxzEhQKDGlzX2F2YWlsYWJsZRgEIAEoCCJ2CgtQYXNzRGV0YWlscxInCgNhb3MYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEicKA2xvcxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASFQoNbWF4X2VsZXZhdGlvbhgDIAEoASKVBAoHQ29udGFjdBIKCgJpZBgBIAEoAxIUCgxzYXRlbGxpdGVfaWQYAiABKAMSGQoRZ3JvdW5kX3N0YXRpb25faWQYAyABKAMSLgoGc3RhdHVzGAQgASgOMh4uYWVncy5jbG92ZXIudjEuQ29udGFjdC5TdGF0dXMSLgoKc3RhcnRfdGltZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi8KC2NyZWF0ZV90aW1lGAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIvCgt1cGRhdGVfdGltZRgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASKQoEcGFzcxgJIAEoCzIbLmFlZ3MuY2xvdmVyLnYxLlBhc3NEZXRhaWxzIrEBCgZTdGF0dXMSFgoSU1RBVFVTX1VOU1BFQ0lGSUVEEAASEgoOU1RBVFVTX1BFTkRJTkcQARIUChBTVEFUVVNfU0NIRURVTEVEEAISEwoPU1RBVFVTX1JFSkVDVEVEEAMSEwoPU1RBVFVTX0NBTkNFTEVEEAQSEgoOU1RBVFVTX1JVTk5JTkcQBRIUChBTVEFUVVNfQ09NUExFVEVEEAYSEQoNU1RBVFVTX0ZBSUxFRBAHYgZwcm90bzM", [file_google_protobuf_timestamp]);
+  fileDesc("ChthZWdzL2Nsb3Zlci92MS9tb2RlbHMucHJvdG8SDmFlZ3MuY2xvdmVyLnYxIiUKCVNhdGVsbGl0ZRIKCgJpZBgBIAEoAxIMCgRuYW1lGAIgASgJImwKCVRMRVJlY29yZBIKCgJpZBgBIAEoAxIgCgN0bGUYAiABKAsyEy5hZWdzLmNsb3Zlci52MS5UTEUSMQoNcmVnaXN0ZXJfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIwoDVExFEg0KBWxpbmUxGAEgASgJEg0KBWxpbmUyGAIgASgJIlYKDUdyb3VuZFN0YXRpb24SCgoCaWQYASABKAMSDAoEbmFtZRgCIAEoCRIrCghsb2NhdGlvbhgDIAEoCzIZLmFlZ3MuY2xvdmVyLnYxLkxhdExuZ0FsdCJCCglMYXRMbmdBbHQSEAoIbGF0aXR1ZGUYASABKAESEQoJbG9uZ2l0dWRlGAIgASgBEhAKCGFsdGl0dWRlGAMgASgBIq8BCgRQYXNzEiwKCXNhdGVsbGl0ZRgBIAEoCzIZLmFlZ3MuY2xvdmVyLnYxLlNhdGVsbGl0ZRI1Cg5ncm91bmRfc3RhdGlvbhgCIAEoCzIdLmFlZ3MuY2xvdmVyLnYxLkdyb3VuZFN0YXRpb24SLAoHZGV0YWlscxgDIAEoCzIbLmFlZ3MuY2xvdmVyLnYxLlBhc3NEZXRhaWxzEhQKDGlzX2F2YWlsYWJsZRgEIAEoCCJ2CgtQYXNzRGV0YWlscxInCgNhb3MYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEicKA2xvcxgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASFQoNbWF4X2VsZXZhdGlvbhgDIAEoASKVBAoHQ29udGFjdBIKCgJpZBgBIAEoAxIUCgxzYXRlbGxpdGVfaWQYAiABKAMSGQoRZ3JvdW5kX3N0YXRpb25faWQYAyABKAMSLgoGc3RhdHVzGAQgASgOMh4uYWVncy5jbG92ZXIudjEuQ29udGFjdC5TdGF0dXMSLgoKc3RhcnRfdGltZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLAoIZW5kX3RpbWUYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi8KC2NyZWF0ZV90aW1lGAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIvCgt1cGRhdGVfdGltZRgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASKQoEcGFzcxgJIAEoCzIbLmFlZ3MuY2xvdmVyLnYxLlBhc3NEZXRhaWxzIrEBCgZTdGF0dXMSFgoSU1RBVFVTX1VOU1BFQ0lGSUVEEAASEgoOU1RBVFVTX1BFTkRJTkcQARIUChBTVEFUVVNfU0NIRURVTEVEEAISEwoPU1RBVFVTX1JFSkVDVEVEEAMSEwoPU1RBVFVTX0NBTkNFTEVEEAQSEgoOU1RBVFVTX1JVTk5JTkcQBRIUChBTVEFUVVNfQ09NUExFVEVEEAYSEQoNU1RBVFVTX0ZBSUxFRBAHIjcKCEJsb2JGaWxlEgsKA3VybBgBIAEoCRIQCghmaWxlbmFtZRgCIAEoCRIMCgRzaXplGAMgASgDYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * 衛星。
@@ -685,4 +685,67 @@ export type Contact_StatusJson = "STATUS_UNSPECIFIED" | "STATUS_PENDING" | "STAT
  */
 export const Contact_StatusSchema: GenEnum<Contact_Status, Contact_StatusJson> = /*@__PURE__*/
   enumDesc(file_aegs_clover_v1_models, 7, 0);
+
+/**
+ * URL からダウンロード可能なファイル。
+ *
+ * @generated from message aegs.clover.v1.BlobFile
+ */
+export type BlobFile = Message<"aegs.clover.v1.BlobFile"> & {
+  /**
+   * ファイルをダウンロードするための URL
+   *
+   * @generated from field: string url = 1;
+   */
+  url: string;
+
+  /**
+   * ファイル名
+   *
+   * @generated from field: string filename = 2;
+   */
+  filename: string;
+
+  /**
+   * ファイルのサイズ [byte]
+   *
+   * @generated from field: int64 size = 3;
+   */
+  size: bigint;
+};
+
+/**
+ * URL からダウンロード可能なファイル。
+ *
+ * @generated from message aegs.clover.v1.BlobFile
+ */
+export type BlobFileJson = {
+  /**
+   * ファイルをダウンロードするための URL
+   *
+   * @generated from field: string url = 1;
+   */
+  url?: string;
+
+  /**
+   * ファイル名
+   *
+   * @generated from field: string filename = 2;
+   */
+  filename?: string;
+
+  /**
+   * ファイルのサイズ [byte]
+   *
+   * @generated from field: int64 size = 3;
+   */
+  size?: string;
+};
+
+/**
+ * Describes the message aegs.clover.v1.BlobFile.
+ * Use `create(BlobFileSchema)` to create a new message.
+ */
+export const BlobFileSchema: GenMessage<BlobFile, BlobFileJson> = /*@__PURE__*/
+  messageDesc(file_aegs_clover_v1_models, 8);
 
