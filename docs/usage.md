@@ -179,7 +179,7 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 ```json
 {
   "contact": {
-    "id": "78",
+    "id": "200",
     "satelliteId": "2",
     "groundStationId": "1",
     "status": "STATUS_SCHEDULED",
@@ -219,6 +219,33 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
   }
 }
 ```
+
+## コンタクト中のデータの取得
+
+Xバンドなど、コンタクト中に取得した Blob ファイルは `ListContactBlobFiles` でダウンロード用の URL を取得できます。
+
+```console
+$ grpcurl -cert ./cert.pem -key ./secret.pem \
+  -d '{"contact_id":200}' \
+  clover.example.com:443 aegs.clover.v1.CloverService/ListContactBlobFiles
+```
+
+```json
+{
+  "blobFiles": [
+    {
+      "url": "https://blob.clover.example.com/ExampleSat/200/20241017190000",
+      "filename": "20241017190000",
+      "size": "123456789"
+    }
+  ]
+}
+```
+
+なお、反映はコンタクト終了からしばらく時間が経ってからになります。
+データを取得したはずなのに空のレスポンスが返る場合は、時間を空けてから再度リクエストしてみてください。
+
+---
 
 以上が、Clover API の基本的な使い方です。
 その他のメソッドや、各パラメータの詳細は [Protocol Documentation](proto.md) を参照してください。
