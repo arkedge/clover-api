@@ -6,15 +6,19 @@ import {
   EntityTitle,
   H4,
   Intent,
+  NonIdealState,
+  NonIdealStateIconSize,
   Section,
   SectionCard,
   Tag,
+  UL,
 } from "@blueprintjs/core";
-import { Add, Updated } from "@blueprintjs/icons";
+import { Add, Document, Updated } from "@blueprintjs/icons";
 import { Code, ConnectError } from "@connectrpc/connect";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
 import {
   Form,
+  Link,
   MetaFunction,
   useLoaderData,
   useNavigation,
@@ -45,7 +49,12 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     BigInt(contact.groundStationId!),
   );
 
-  return json({ contact, satellite, groundStation });
+  let blobFiles = null;
+  if (["STATUS_COMPLETED", "STATUS_FAILED"].includes(contact.status!)) {
+    blobFiles = await client.listContactBlobFiles(contactId);
+  }
+
+  return json({ contact, satellite, groundStation, blobFiles });
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
@@ -84,7 +93,8 @@ export const action = async ({ params }: LoaderFunctionArgs) => {
 };
 
 export default function ContactDetailPage() {
-  const { contact, satellite, groundStation } = useLoaderData<typeof loader>();
+  const { contact, satellite, groundStation, blobFiles } =
+    useLoaderData<typeof loader>();
 
   return (
     <main className="container mx-auto space-y-6 py-8">
@@ -159,8 +169,46 @@ export default function ContactDetailPage() {
           </SectionCard>
         </Section>
       ) : null}
+
+      {blobFiles ? (
+        <Section title="Blob Files">
+          {blobFiles.length > 0 ? (
+            <SectionCard>
+              <UL>
+                {blobFiles.map((blobFile, i) => (
+                  <li key={i}>
+                    <Link to={blobFile.url!}>
+                      <Document />
+                      {blobFile.filename} (
+                      {formatBytes(parseInt(blobFile.size!))})
+                    </Link>
+                  </li>
+                ))}
+              </UL>
+            </SectionCard>
+          ) : (
+            <NonIdealState
+              layout="horizontal"
+              icon="issue"
+              iconSize={NonIdealStateIconSize.SMALL}
+              title="No blob files."
+              className="my-3"
+            />
+          )}
+        </Section>
+      ) : null}
     </main>
   );
+}
+
+// https://stackoverflow.com/a/18650828
+function formatBytes(bytes: number) {
+  if (bytes === 0) return "0 Bytes";
+
+  const k = 1024;
+  const sizes = ["Bytes", "KiB", "MiB", "GiB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${(bytes / Math.pow(k, i)).toFixed(2)} ${sizes[i]}`;
 }
 
 function CancelButton() {
