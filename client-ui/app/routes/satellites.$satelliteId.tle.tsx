@@ -88,7 +88,11 @@ export default function SatelliteTLEPage() {
       <Breadcrumbs
         items={[
           { href: "/", icon: "home", text: "Home" },
-          { icon: "satellite", text: satellite.name },
+          {
+            href: `/satellites/${satellite.id}`,
+            icon: "satellite",
+            text: satellite.name,
+          },
           { text: "TLE" },
         ]}
       />
