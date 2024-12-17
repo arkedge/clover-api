@@ -222,7 +222,7 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 
 ## コンタクト中のデータの取得
 
-Xバンドなど、コンタクト中に取得した Blob ファイルは `ListContactBlobFiles` でダウンロード用の URL を取得できます。
+Xバンドなど、コンタクト中に取得した Blob ファイルは `ListContactBlobFiles` で有効期限付きのダウンロード用 URL を取得できます。
 
 ```console
 $ grpcurl -cert ./cert.pem -key ./secret.pem \
@@ -244,6 +244,8 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 
 なお、反映はコンタクト終了からしばらく時間が経ってからになります。
 データを取得したはずなのに空のレスポンスが返る場合は、時間を空けてから再度リクエストしてみてください。
+
+また、grpcurl では JSON における文字列値の `&` といった文字が `\u0026` に置き換えられるとのことなので注意してください（[fullstorydev/grpcurl#184](https://github.com/fullstorydev/grpcurl/issues/184)）。
 
 ---
 
