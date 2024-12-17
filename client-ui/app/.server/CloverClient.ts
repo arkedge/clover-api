@@ -3,6 +3,7 @@ import { timestampFromDate } from "@bufbuild/protobuf/wkt";
 import { Client, Code, ConnectError, createClient } from "@connectrpc/connect";
 import { CloverService } from "~/gen/aegs/clover/v1/clover_service_pb";
 import {
+  BlobFileSchema,
   ContactSchema,
   GroundStationSchema,
   PassSchema,
@@ -122,5 +123,20 @@ export class CloverClient {
       groundStationIds,
     });
     return response.passes.map((pass) => toJson(PassSchema, pass));
+  }
+
+  async listContactBlobFiles(contactId: bigint) {
+    try {
+      const response = await this.client.listContactBlobFiles({ contactId });
+      return response.blobFiles.map((blobFile) =>
+        toJson(BlobFileSchema, blobFile),
+      );
+    } catch (err) {
+      if (err instanceof ConnectError && err.code === Code.FailedPrecondition) {
+        return null;
+      } else {
+        throw err;
+      }
+    }
   }
 }
