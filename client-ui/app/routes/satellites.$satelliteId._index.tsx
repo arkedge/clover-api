@@ -164,10 +164,18 @@ function TLESection() {
 }
 
 function ContactsSection() {
-  const { groundStations, contacts } = useLoaderData<typeof loader>();
+  const { satellite, groundStations, contacts } =
+    useLoaderData<typeof loader>();
 
   return (
-    <Section title="Upcoming Contacts">
+    <Section
+      title="Upcoming Contacts"
+      rightElement={
+        <Link to={`/satellites/${satellite.id}/contacts`}>
+          <Button minimal={true} intent={Intent.PRIMARY} text="Past Contacts" />
+        </Link>
+      }
+    >
       {contacts.length ? (
         <ContactTable contacts={contacts} groundStations={groundStations} />
       ) : (

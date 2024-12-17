@@ -78,6 +78,11 @@ export class CloverClient {
     return response.contacts.map((contact) => toJson(ContactSchema, contact));
   }
 
+  async listPastContacts(satelliteId: bigint) {
+    const response = await this.client.listPastContacts({ satelliteId });
+    return response.contacts.map((contact) => toJson(ContactSchema, contact));
+  }
+
   async getContact(contactId: bigint) {
     try {
       const response = await this.client.getContact({ contactId });
