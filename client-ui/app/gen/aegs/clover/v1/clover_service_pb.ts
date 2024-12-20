@@ -4,7 +4,7 @@
 
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv1";
-import type { Contact, ContactJson, GroundStation, GroundStationJson, Pass, PassJson, Satellite, SatelliteJson, TLE, TLEJson, TLERecord, TLERecordJson } from "./models_pb";
+import type { BlobFile, BlobFileJson, Contact, ContactJson, GroundStation, GroundStationJson, Pass, PassJson, Satellite, SatelliteJson, TLE, TLEJson, TLERecord, TLERecordJson } from "./models_pb";
 import { file_aegs_clover_v1_models } from "./models_pb";
 import type { Timestamp, TimestampJson } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file aegs/clover/v1/clover_service.proto.
  */
 export const file_aegs_clover_v1_clover_service: GenFile = /*@__PURE__*/
-  fileDesc("CiNhZWdzL2Nsb3Zlci92MS9jbG92ZXJfc2VydmljZS5wcm90bxIOYWVncy5jbG92ZXIudjEiFwoVTGlzdFNhdGVsbGl0ZXNSZXF1ZXN0IkcKFkxpc3RTYXRlbGxpdGVzUmVzcG9uc2USLQoKc2F0ZWxsaXRlcxgBIAMoCzIZLmFlZ3MuY2xvdmVyLnYxLlNhdGVsbGl0ZSIrChNHZXRTYXRlbGxpdGVSZXF1ZXN0EhQKDHNhdGVsbGl0ZV9pZBgBIAEoAyJEChRHZXRTYXRlbGxpdGVSZXNwb25zZRIsCglzYXRlbGxpdGUYASABKAsyGS5hZWdzLmNsb3Zlci52MS5TYXRlbGxpdGUiKwoTR2V0TGF0ZXN0VExFUmVxdWVzdBIUCgxzYXRlbGxpdGVfaWQYASABKAMiRQoUR2V0TGF0ZXN0VExFUmVzcG9uc2USLQoKdGxlX3JlY29yZBgBIAEoCzIZLmFlZ3MuY2xvdmVyLnYxLlRMRVJlY29yZCJMChJSZWdpc3RlclRMRVJlcXVlc3QSFAoMc2F0ZWxsaXRlX2lkGAEgASgDEiAKA3RsZRgCIAEoCzITLmFlZ3MuY2xvdmVyLnYxLlRMRSJEChNSZWdpc3RlclRMRVJlc3BvbnNlEi0KCnRsZV9yZWNvcmQYASABKAsyGS5hZWdzLmNsb3Zlci52MS5UTEVSZWNvcmQiOgoiTGlzdEF2YWlsYWJsZUdyb3VuZFN0YXRpb25zUmVxdWVzdBIUCgxzYXRlbGxpdGVfaWQYASABKAMiXQojTGlzdEF2YWlsYWJsZUdyb3VuZFN0YXRpb25zUmVzcG9uc2USNgoPZ3JvdW5kX3N0YXRpb25zGAEgAygLMh0uYWVncy5jbG92ZXIudjEuR3JvdW5kU3RhdGlvbiI0ChdHZXRHcm91bmRTdGF0aW9uUmVxdWVzdBIZChFncm91bmRfc3RhdGlvbl9pZBgBIAEoAyJRChhHZXRHcm91bmRTdGF0aW9uUmVzcG9uc2USNQoOZ3JvdW5kX3N0YXRpb24YASABKAsyHS5hZWdzLmNsb3Zlci52MS5Hcm91bmRTdGF0aW9uIkUKEUxpc3RQYXNzZXNSZXF1ZXN0EhQKDHNhdGVsbGl0ZV9pZBgBIAEoAxIaChJncm91bmRfc3RhdGlvbl9pZHMYAiADKAMiOgoSTGlzdFBhc3Nlc1Jlc3BvbnNlEiQKBnBhc3NlcxgBIAMoCzIULmFlZ3MuY2xvdmVyLnYxLlBhc3MiMwobTGlzdFVwY29taW5nQ29udGFjdHNSZXF1ZXN0EhQKDHNhdGVsbGl0ZV9pZBgBIAEoAyJJChxMaXN0VXBjb21pbmdDb250YWN0c1Jlc3BvbnNlEikKCGNvbnRhY3RzGAEgAygLMhcuYWVncy5jbG92ZXIudjEuQ29udGFjdCInChFHZXRDb250YWN0UmVxdWVzdBISCgpjb250YWN0X2lkGAEgASgDIj4KEkdldENvbnRhY3RSZXNwb25zZRIoCgdjb250YWN0GAEgASgLMhcuYWVncy5jbG92ZXIudjEuQ29udGFjdCKZAQoUQ3JlYXRlQ29udGFjdFJlcXVlc3QSFAoMc2F0ZWxsaXRlX2lkGAEgASgDEhkKEWdyb3VuZF9zdGF0aW9uX2lkGAIgASgDEicKA2FvcxgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASJwoDbG9zGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJBChVDcmVhdGVDb250YWN0UmVzcG9uc2USKAoHY29udGFjdBgBIAEoCzIXLmFlZ3MuY2xvdmVyLnYxLkNvbnRhY3QiKgoUQ2FuY2VsQ29udGFjdFJlcXVlc3QSEgoKY29udGFjdF9pZBgBIAEoAyJBChVDYW5jZWxDb250YWN0UmVzcG9uc2USKAoHY29udGFjdBgBIAEoCzIXLmFlZ3MuY2xvdmVyLnYxLkNvbnRhY3QyxwgKDUNsb3ZlclNlcnZpY2USXwoOTGlzdFNhdGVsbGl0ZXMSJS5hZWdzLmNsb3Zlci52MS5MaXN0U2F0ZWxsaXRlc1JlcXVlc3QaJi5hZWdzLmNsb3Zlci52MS5MaXN0U2F0ZWxsaXRlc1Jlc3BvbnNlElkKDEdldFNhdGVsbGl0ZRIjLmFlZ3MuY2xvdmVyLnYxLkdldFNhdGVsbGl0ZVJlcXVlc3QaJC5hZWdzLmNsb3Zlci52MS5HZXRTYXRlbGxpdGVSZXNwb25zZRJZCgxHZXRMYXRlc3RUTEUSIy5hZWdzLmNsb3Zlci52MS5HZXRMYXRlc3RUTEVSZXF1ZXN0GiQuYWVncy5jbG92ZXIudjEuR2V0TGF0ZXN0VExFUmVzcG9uc2USVgoLUmVnaXN0ZXJUTEUSIi5hZWdzLmNsb3Zlci52MS5SZWdpc3RlclRMRVJlcXVlc3QaIy5hZWdzLmNsb3Zlci52MS5SZWdpc3RlclRMRVJlc3BvbnNlEoYBChtMaXN0QXZhaWxhYmxlR3JvdW5kU3RhdGlvbnMSMi5hZWdzLmNsb3Zlci52MS5MaXN0QXZhaWxhYmxlR3JvdW5kU3RhdGlvbnNSZXF1ZXN0GjMuYWVncy5jbG92ZXIudjEuTGlzdEF2YWlsYWJsZUdyb3VuZFN0YXRpb25zUmVzcG9uc2USZQoQR2V0R3JvdW5kU3RhdGlvbhInLmFlZ3MuY2xvdmVyLnYxLkdldEdyb3VuZFN0YXRpb25SZXF1ZXN0GiguYWVncy5jbG92ZXIudjEuR2V0R3JvdW5kU3RhdGlvblJlc3BvbnNlElMKCkxpc3RQYXNzZXMSIS5hZWdzLmNsb3Zlci52MS5MaXN0UGFzc2VzUmVxdWVzdBoiLmFlZ3MuY2xvdmVyLnYxLkxpc3RQYXNzZXNSZXNwb25zZRJxChRMaXN0VXBjb21pbmdDb250YWN0cxIrLmFlZ3MuY2xvdmVyLnYxLkxpc3RVcGNvbWluZ0NvbnRhY3RzUmVxdWVzdBosLmFlZ3MuY2xvdmVyLnYxLkxpc3RVcGNvbWluZ0NvbnRhY3RzUmVzcG9uc2USUwoKR2V0Q29udGFjdBIhLmFlZ3MuY2xvdmVyLnYxLkdldENvbnRhY3RSZXF1ZXN0GiIuYWVncy5jbG92ZXIudjEuR2V0Q29udGFjdFJlc3BvbnNlElwKDUNyZWF0ZUNvbnRhY3QSJC5hZWdzLmNsb3Zlci52MS5DcmVhdGVDb250YWN0UmVxdWVzdBolLmFlZ3MuY2xvdmVyLnYxLkNyZWF0ZUNvbnRhY3RSZXNwb25zZRJcCg1DYW5jZWxDb250YWN0EiQuYWVncy5jbG92ZXIudjEuQ2FuY2VsQ29udGFjdFJlcXVlc3QaJS5hZWdzLmNsb3Zlci52MS5DYW5jZWxDb250YWN0UmVzcG9uc2ViBnByb3RvMw", [file_aegs_clover_v1_models, file_google_protobuf_timestamp]);
+  fileDesc("CiNhZWdzL2Nsb3Zlci92MS9jbG92ZXJfc2VydmljZS5wcm90bxIOYWVncy5jbG92ZXIudjEiFwoVTGlzdFNhdGVsbGl0ZXNSZXF1ZXN0IkcKFkxpc3RTYXRlbGxpdGVzUmVzcG9uc2USLQoKc2F0ZWxsaXRlcxgBIAMoCzIZLmFlZ3MuY2xvdmVyLnYxLlNhdGVsbGl0ZSIrChNHZXRTYXRlbGxpdGVSZXF1ZXN0EhQKDHNhdGVsbGl0ZV9pZBgBIAEoAyJEChRHZXRTYXRlbGxpdGVSZXNwb25zZRIsCglzYXRlbGxpdGUYASABKAsyGS5hZWdzLmNsb3Zlci52MS5TYXRlbGxpdGUiKwoTR2V0TGF0ZXN0VExFUmVxdWVzdBIUCgxzYXRlbGxpdGVfaWQYASABKAMiRQoUR2V0TGF0ZXN0VExFUmVzcG9uc2USLQoKdGxlX3JlY29yZBgBIAEoCzIZLmFlZ3MuY2xvdmVyLnYxLlRMRVJlY29yZCJMChJSZWdpc3RlclRMRVJlcXVlc3QSFAoMc2F0ZWxsaXRlX2lkGAEgASgDEiAKA3RsZRgCIAEoCzITLmFlZ3MuY2xvdmVyLnYxLlRMRSJEChNSZWdpc3RlclRMRVJlc3BvbnNlEi0KCnRsZV9yZWNvcmQYASABKAsyGS5hZWdzLmNsb3Zlci52MS5UTEVSZWNvcmQiOgoiTGlzdEF2YWlsYWJsZUdyb3VuZFN0YXRpb25zUmVxdWVzdBIUCgxzYXRlbGxpdGVfaWQYASABKAMiXQojTGlzdEF2YWlsYWJsZUdyb3VuZFN0YXRpb25zUmVzcG9uc2USNgoPZ3JvdW5kX3N0YXRpb25zGAEgAygLMh0uYWVncy5jbG92ZXIudjEuR3JvdW5kU3RhdGlvbiI0ChdHZXRHcm91bmRTdGF0aW9uUmVxdWVzdBIZChFncm91bmRfc3RhdGlvbl9pZBgBIAEoAyJRChhHZXRHcm91bmRTdGF0aW9uUmVzcG9uc2USNQoOZ3JvdW5kX3N0YXRpb24YASABKAsyHS5hZWdzLmNsb3Zlci52MS5Hcm91bmRTdGF0aW9uIkUKEUxpc3RQYXNzZXNSZXF1ZXN0EhQKDHNhdGVsbGl0ZV9pZBgBIAEoAxIaChJncm91bmRfc3RhdGlvbl9pZHMYAiADKAMiOgoSTGlzdFBhc3Nlc1Jlc3BvbnNlEiQKBnBhc3NlcxgBIAMoCzIULmFlZ3MuY2xvdmVyLnYxLlBhc3MiMwobTGlzdFVwY29taW5nQ29udGFjdHNSZXF1ZXN0EhQKDHNhdGVsbGl0ZV9pZBgBIAEoAyJJChxMaXN0VXBjb21pbmdDb250YWN0c1Jlc3BvbnNlEikKCGNvbnRhY3RzGAEgAygLMhcuYWVncy5jbG92ZXIudjEuQ29udGFjdCIvChdMaXN0UGFzdENvbnRhY3RzUmVxdWVzdBIUCgxzYXRlbGxpdGVfaWQYASABKAMiRQoYTGlzdFBhc3RDb250YWN0c1Jlc3BvbnNlEikKCGNvbnRhY3RzGAEgAygLMhcuYWVncy5jbG92ZXIudjEuQ29udGFjdCInChFHZXRDb250YWN0UmVxdWVzdBISCgpjb250YWN0X2lkGAEgASgDIj4KEkdldENvbnRhY3RSZXNwb25zZRIoCgdjb250YWN0GAEgASgLMhcuYWVncy5jbG92ZXIudjEuQ29udGFjdCKZAQoUQ3JlYXRlQ29udGFjdFJlcXVlc3QSFAoMc2F0ZWxsaXRlX2lkGAEgASgDEhkKEWdyb3VuZF9zdGF0aW9uX2lkGAIgASgDEicKA2FvcxgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASJwoDbG9zGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJBChVDcmVhdGVDb250YWN0UmVzcG9uc2USKAoHY29udGFjdBgBIAEoCzIXLmFlZ3MuY2xvdmVyLnYxLkNvbnRhY3QiKgoUQ2FuY2VsQ29udGFjdFJlcXVlc3QSEgoKY29udGFjdF9pZBgBIAEoAyJBChVDYW5jZWxDb250YWN0UmVzcG9uc2USKAoHY29udGFjdBgBIAEoCzIXLmFlZ3MuY2xvdmVyLnYxLkNvbnRhY3QiMQobTGlzdENvbnRhY3RCbG9iRmlsZXNSZXF1ZXN0EhIKCmNvbnRhY3RfaWQYASABKAMiTAocTGlzdENvbnRhY3RCbG9iRmlsZXNSZXNwb25zZRIsCgpibG9iX2ZpbGVzGAEgAygLMhguYWVncy5jbG92ZXIudjEuQmxvYkZpbGUyoQoKDUNsb3ZlclNlcnZpY2USXwoOTGlzdFNhdGVsbGl0ZXMSJS5hZWdzLmNsb3Zlci52MS5MaXN0U2F0ZWxsaXRlc1JlcXVlc3QaJi5hZWdzLmNsb3Zlci52MS5MaXN0U2F0ZWxsaXRlc1Jlc3BvbnNlElkKDEdldFNhdGVsbGl0ZRIjLmFlZ3MuY2xvdmVyLnYxLkdldFNhdGVsbGl0ZVJlcXVlc3QaJC5hZWdzLmNsb3Zlci52MS5HZXRTYXRlbGxpdGVSZXNwb25zZRJZCgxHZXRMYXRlc3RUTEUSIy5hZWdzLmNsb3Zlci52MS5HZXRMYXRlc3RUTEVSZXF1ZXN0GiQuYWVncy5jbG92ZXIudjEuR2V0TGF0ZXN0VExFUmVzcG9uc2USVgoLUmVnaXN0ZXJUTEUSIi5hZWdzLmNsb3Zlci52MS5SZWdpc3RlclRMRVJlcXVlc3QaIy5hZWdzLmNsb3Zlci52MS5SZWdpc3RlclRMRVJlc3BvbnNlEoYBChtMaXN0QXZhaWxhYmxlR3JvdW5kU3RhdGlvbnMSMi5hZWdzLmNsb3Zlci52MS5MaXN0QXZhaWxhYmxlR3JvdW5kU3RhdGlvbnNSZXF1ZXN0GjMuYWVncy5jbG92ZXIudjEuTGlzdEF2YWlsYWJsZUdyb3VuZFN0YXRpb25zUmVzcG9uc2USZQoQR2V0R3JvdW5kU3RhdGlvbhInLmFlZ3MuY2xvdmVyLnYxLkdldEdyb3VuZFN0YXRpb25SZXF1ZXN0GiguYWVncy5jbG92ZXIudjEuR2V0R3JvdW5kU3RhdGlvblJlc3BvbnNlElMKCkxpc3RQYXNzZXMSIS5hZWdzLmNsb3Zlci52MS5MaXN0UGFzc2VzUmVxdWVzdBoiLmFlZ3MuY2xvdmVyLnYxLkxpc3RQYXNzZXNSZXNwb25zZRJxChRMaXN0VXBjb21pbmdDb250YWN0cxIrLmFlZ3MuY2xvdmVyLnYxLkxpc3RVcGNvbWluZ0NvbnRhY3RzUmVxdWVzdBosLmFlZ3MuY2xvdmVyLnYxLkxpc3RVcGNvbWluZ0NvbnRhY3RzUmVzcG9uc2USZQoQTGlzdFBhc3RDb250YWN0cxInLmFlZ3MuY2xvdmVyLnYxLkxpc3RQYXN0Q29udGFjdHNSZXF1ZXN0GiguYWVncy5jbG92ZXIudjEuTGlzdFBhc3RDb250YWN0c1Jlc3BvbnNlElMKCkdldENvbnRhY3QSIS5hZWdzLmNsb3Zlci52MS5HZXRDb250YWN0UmVxdWVzdBoiLmFlZ3MuY2xvdmVyLnYxLkdldENvbnRhY3RSZXNwb25zZRJcCg1DcmVhdGVDb250YWN0EiQuYWVncy5jbG92ZXIudjEuQ3JlYXRlQ29udGFjdFJlcXVlc3QaJS5hZWdzLmNsb3Zlci52MS5DcmVhdGVDb250YWN0UmVzcG9uc2USXAoNQ2FuY2VsQ29udGFjdBIkLmFlZ3MuY2xvdmVyLnYxLkNhbmNlbENvbnRhY3RSZXF1ZXN0GiUuYWVncy5jbG92ZXIudjEuQ2FuY2VsQ29udGFjdFJlc3BvbnNlEnEKFExpc3RDb250YWN0QmxvYkZpbGVzEisuYWVncy5jbG92ZXIudjEuTGlzdENvbnRhY3RCbG9iRmlsZXNSZXF1ZXN0GiwuYWVncy5jbG92ZXIudjEuTGlzdENvbnRhY3RCbG9iRmlsZXNSZXNwb25zZWIGcHJvdG8z", [file_aegs_clover_v1_models, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message aegs.clover.v1.ListSatellitesRequest
@@ -531,6 +531,68 @@ export const ListUpcomingContactsResponseSchema: GenMessage<ListUpcomingContacts
   messageDesc(file_aegs_clover_v1_clover_service, 15);
 
 /**
+ * @generated from message aegs.clover.v1.ListPastContactsRequest
+ */
+export type ListPastContactsRequest = Message<"aegs.clover.v1.ListPastContactsRequest"> & {
+  /**
+   * コンタクトのリストを取得する対象の衛星 ID
+   *
+   * @generated from field: int64 satellite_id = 1;
+   */
+  satelliteId: bigint;
+};
+
+/**
+ * @generated from message aegs.clover.v1.ListPastContactsRequest
+ */
+export type ListPastContactsRequestJson = {
+  /**
+   * コンタクトのリストを取得する対象の衛星 ID
+   *
+   * @generated from field: int64 satellite_id = 1;
+   */
+  satelliteId?: string;
+};
+
+/**
+ * Describes the message aegs.clover.v1.ListPastContactsRequest.
+ * Use `create(ListPastContactsRequestSchema)` to create a new message.
+ */
+export const ListPastContactsRequestSchema: GenMessage<ListPastContactsRequest, ListPastContactsRequestJson> = /*@__PURE__*/
+  messageDesc(file_aegs_clover_v1_clover_service, 16);
+
+/**
+ * @generated from message aegs.clover.v1.ListPastContactsResponse
+ */
+export type ListPastContactsResponse = Message<"aegs.clover.v1.ListPastContactsResponse"> & {
+  /**
+   * 指定された衛星を対象とした過去14日以内のコンタクトのリスト
+   *
+   * @generated from field: repeated aegs.clover.v1.Contact contacts = 1;
+   */
+  contacts: Contact[];
+};
+
+/**
+ * @generated from message aegs.clover.v1.ListPastContactsResponse
+ */
+export type ListPastContactsResponseJson = {
+  /**
+   * 指定された衛星を対象とした過去14日以内のコンタクトのリスト
+   *
+   * @generated from field: repeated aegs.clover.v1.Contact contacts = 1;
+   */
+  contacts?: ContactJson[];
+};
+
+/**
+ * Describes the message aegs.clover.v1.ListPastContactsResponse.
+ * Use `create(ListPastContactsResponseSchema)` to create a new message.
+ */
+export const ListPastContactsResponseSchema: GenMessage<ListPastContactsResponse, ListPastContactsResponseJson> = /*@__PURE__*/
+  messageDesc(file_aegs_clover_v1_clover_service, 17);
+
+/**
  * @generated from message aegs.clover.v1.GetContactRequest
  */
 export type GetContactRequest = Message<"aegs.clover.v1.GetContactRequest"> & {
@@ -559,7 +621,7 @@ export type GetContactRequestJson = {
  * Use `create(GetContactRequestSchema)` to create a new message.
  */
 export const GetContactRequestSchema: GenMessage<GetContactRequest, GetContactRequestJson> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_clover_service, 16);
+  messageDesc(file_aegs_clover_v1_clover_service, 18);
 
 /**
  * @generated from message aegs.clover.v1.GetContactResponse
@@ -590,7 +652,7 @@ export type GetContactResponseJson = {
  * Use `create(GetContactResponseSchema)` to create a new message.
  */
 export const GetContactResponseSchema: GenMessage<GetContactResponse, GetContactResponseJson> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_clover_service, 17);
+  messageDesc(file_aegs_clover_v1_clover_service, 19);
 
 /**
  * @generated from message aegs.clover.v1.CreateContactRequest
@@ -663,7 +725,7 @@ export type CreateContactRequestJson = {
  * Use `create(CreateContactRequestSchema)` to create a new message.
  */
 export const CreateContactRequestSchema: GenMessage<CreateContactRequest, CreateContactRequestJson> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_clover_service, 18);
+  messageDesc(file_aegs_clover_v1_clover_service, 20);
 
 /**
  * @generated from message aegs.clover.v1.CreateContactResponse
@@ -694,7 +756,7 @@ export type CreateContactResponseJson = {
  * Use `create(CreateContactResponseSchema)` to create a new message.
  */
 export const CreateContactResponseSchema: GenMessage<CreateContactResponse, CreateContactResponseJson> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_clover_service, 19);
+  messageDesc(file_aegs_clover_v1_clover_service, 21);
 
 /**
  * @generated from message aegs.clover.v1.CancelContactRequest
@@ -725,7 +787,7 @@ export type CancelContactRequestJson = {
  * Use `create(CancelContactRequestSchema)` to create a new message.
  */
 export const CancelContactRequestSchema: GenMessage<CancelContactRequest, CancelContactRequestJson> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_clover_service, 20);
+  messageDesc(file_aegs_clover_v1_clover_service, 22);
 
 /**
  * @generated from message aegs.clover.v1.CancelContactResponse
@@ -756,7 +818,69 @@ export type CancelContactResponseJson = {
  * Use `create(CancelContactResponseSchema)` to create a new message.
  */
 export const CancelContactResponseSchema: GenMessage<CancelContactResponse, CancelContactResponseJson> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_clover_service, 21);
+  messageDesc(file_aegs_clover_v1_clover_service, 23);
+
+/**
+ * @generated from message aegs.clover.v1.ListContactBlobFilesRequest
+ */
+export type ListContactBlobFilesRequest = Message<"aegs.clover.v1.ListContactBlobFilesRequest"> & {
+  /**
+   * ファイルのリストを取得するコンタクトの ID
+   *
+   * @generated from field: int64 contact_id = 1;
+   */
+  contactId: bigint;
+};
+
+/**
+ * @generated from message aegs.clover.v1.ListContactBlobFilesRequest
+ */
+export type ListContactBlobFilesRequestJson = {
+  /**
+   * ファイルのリストを取得するコンタクトの ID
+   *
+   * @generated from field: int64 contact_id = 1;
+   */
+  contactId?: string;
+};
+
+/**
+ * Describes the message aegs.clover.v1.ListContactBlobFilesRequest.
+ * Use `create(ListContactBlobFilesRequestSchema)` to create a new message.
+ */
+export const ListContactBlobFilesRequestSchema: GenMessage<ListContactBlobFilesRequest, ListContactBlobFilesRequestJson> = /*@__PURE__*/
+  messageDesc(file_aegs_clover_v1_clover_service, 24);
+
+/**
+ * @generated from message aegs.clover.v1.ListContactBlobFilesResponse
+ */
+export type ListContactBlobFilesResponse = Message<"aegs.clover.v1.ListContactBlobFilesResponse"> & {
+  /**
+   * コンタクトで生成されたファイルのリスト
+   *
+   * @generated from field: repeated aegs.clover.v1.BlobFile blob_files = 1;
+   */
+  blobFiles: BlobFile[];
+};
+
+/**
+ * @generated from message aegs.clover.v1.ListContactBlobFilesResponse
+ */
+export type ListContactBlobFilesResponseJson = {
+  /**
+   * コンタクトで生成されたファイルのリスト
+   *
+   * @generated from field: repeated aegs.clover.v1.BlobFile blob_files = 1;
+   */
+  blobFiles?: BlobFileJson[];
+};
+
+/**
+ * Describes the message aegs.clover.v1.ListContactBlobFilesResponse.
+ * Use `create(ListContactBlobFilesResponseSchema)` to create a new message.
+ */
+export const ListContactBlobFilesResponseSchema: GenMessage<ListContactBlobFilesResponse, ListContactBlobFilesResponseJson> = /*@__PURE__*/
+  messageDesc(file_aegs_clover_v1_clover_service, 25);
 
 /**
  * アークエッジ・スペースの地上局予約サービス。
@@ -846,6 +970,16 @@ export const CloverService: GenService<{
     output: typeof ListUpcomingContactsResponseSchema;
   },
   /**
+   * 指定した衛星について、end_time が過去14日以内のコンタクトのリストを取得する。
+   *
+   * @generated from rpc aegs.clover.v1.CloverService.ListPastContacts
+   */
+  listPastContacts: {
+    methodKind: "unary";
+    input: typeof ListPastContactsRequestSchema;
+    output: typeof ListPastContactsResponseSchema;
+  },
+  /**
    * 指定したコンタクトを取得する。
    *
    * @generated from rpc aegs.clover.v1.CloverService.GetContact
@@ -877,6 +1011,17 @@ export const CloverService: GenService<{
     methodKind: "unary";
     input: typeof CancelContactRequestSchema;
     output: typeof CancelContactResponseSchema;
+  },
+  /**
+   * 指定したコンタクトで得られたファイルのリストを取得する。
+   * コンタクトがファイルを生成するよう設定されていない場合は NOT_FOUND (5) のエラーが返る。
+   *
+   * @generated from rpc aegs.clover.v1.CloverService.ListContactBlobFiles
+   */
+  listContactBlobFiles: {
+    methodKind: "unary";
+    input: typeof ListContactBlobFilesRequestSchema;
+    output: typeof ListContactBlobFilesResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_aegs_clover_v1_clover_service, 0);
