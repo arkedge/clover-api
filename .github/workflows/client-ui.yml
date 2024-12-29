@@ -96,7 +96,7 @@ jobs:
             type=sha,prefix=
             type=raw,value=latest
 
-      - uses: docker/build-push-action@v6.9.0
+      - uses: docker/build-push-action@v6.10.0
         id: build-push
         with:
           context: ./client-ui
