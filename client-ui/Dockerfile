@@ -2,6 +2,9 @@ FROM node:22-bullseye-slim AS base
 
 ENV NODE_ENV=production
 
+# https://github.com/nodejs/corepack/issues/612#issuecomment-2629496091
+RUN npm install -g corepack@latest
+
 RUN corepack enable
 
 # build stage
