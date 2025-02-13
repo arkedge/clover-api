@@ -54,7 +54,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - uses: actions/attest-build-provenance@v2.1.0
+      - uses: actions/attest-build-provenance@v2.2.0
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.build-push.outputs.digest }}
