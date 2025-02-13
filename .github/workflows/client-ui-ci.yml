@@ -71,7 +71,7 @@ jobs:
           # renovate: datasource=github-releases depName=docker/buildx
           version: "v0.19.3"
 
-      - uses: docker/build-push-action@v6.11.0
+      - uses: docker/build-push-action@v6.13.0
         id: build
         with:
           context: ./client-ui
