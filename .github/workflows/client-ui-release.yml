@@ -1,66 +1,15 @@
-name: Client UI
+name: Client UI Release
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - client-ui/**
-      - .github/workflows/client-ui.yml
-  pull_request:
-    branches:
-      - main
-    paths:
-      - client-ui/**
-      - .github/workflows/client-ui.yml
+  workflow_dispatch:
 
 defaults:
   run:
     working-directory: ./client-ui
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4.2.2
-
-      - uses: pnpm/action-setup@v4.0.0
-        with:
-          package_json_file: client-ui/package.json
-
-      - uses: actions/setup-node@v4.1.0
-        with:
-          cache: pnpm
-          cache-dependency-path: client-ui/pnpm-lock.yaml
-          node-version-file: client-ui/.nvmrc
-
-      - run: pnpm install
-
-      - run: pnpm run lint
-
-  typecheck:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4.2.2
-
-      - uses: pnpm/action-setup@v4.0.0
-        with:
-          package_json_file: client-ui/package.json
-
-      - uses: actions/setup-node@v4.1.0
-        with:
-          cache: pnpm
-          cache-dependency-path: client-ui/pnpm-lock.yaml
-          node-version-file: client-ui/.nvmrc
-
-      - run: pnpm install
-
-      - run: pnpm run typecheck
-
-  build:
-    name: build ${{ github.ref_name == 'main' && 'and push' || '' }}
+  build-push:
+    name: build and push
     runs-on: ubuntu-latest
 
     permissions:
@@ -82,7 +31,6 @@ jobs:
           version: "v0.19.3"
 
       - uses: docker/login-action@v3.3.0
-        if: github.ref_name == 'main'
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -100,14 +48,13 @@ jobs:
         id: build-push
         with:
           context: ./client-ui
-          push: ${{ github.ref_name == 'main' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - uses: actions/attest-build-provenance@v2.1.0
-        if: github.ref_name == 'main'
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.build-push.outputs.digest }}
