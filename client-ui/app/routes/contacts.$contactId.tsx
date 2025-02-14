@@ -148,15 +148,15 @@ export default function ContactDetailPage() {
         <Section title="Pass Info">
           <SectionCard padded={false}>
             <CardList bordered={false}>
-              <Card className="!grid grid-cols-6">
+              <Card className="grid! grid-cols-6">
                 <div className="font-semibold">AOS</div>
                 <div className="col-span-5">{contact.pass.aos}</div>
               </Card>
-              <Card className="!grid grid-cols-6">
+              <Card className="grid! grid-cols-6">
                 <div className="font-semibold">LOS</div>
                 <div className="col-span-5">{contact.pass.los}</div>
               </Card>
-              <Card className="!grid grid-cols-6">
+              <Card className="grid! grid-cols-6">
                 <div className="font-semibold">Max Elevation</div>
                 <div className="col-span-5">
                   {typeof contact.pass.maxElevation === "number"
