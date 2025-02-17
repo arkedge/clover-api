@@ -219,7 +219,7 @@ function PassesSection() {
                 className={
                   pass.isAvailable
                     ? undefined
-                    : "*:!cursor-not-allowed *:!text-muted"
+                    : "*:text-muted! *:cursor-not-allowed!"
                 }
               >
                 <td>{pass.groundStation!.name}</td>
