@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@blueprintjs/core':
         specifier: ^5.14.0
-        version: 5.16.4(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.17.6(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@blueprintjs/icons':
         specifier: ^5.14.0
-        version: 5.17.1(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.20.0(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@bufbuild/protobuf':
         specifier: ^2.2.2
         version: 2.2.3
@@ -234,8 +234,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/runtime@7.26.7':
-    resolution: {integrity: sha512-AOPI3D+a8dXnja+iwsUqGRjr1BbZIe771sXdapOtYI531gSqpi92vXivKcq2asu/DFpdl1ceFAKZyRzK2PCVcQ==}
+  '@babel/runtime@7.26.10':
+    resolution: {integrity: sha512-2WJMeRQPHKSPemqk/awGrAiuFfzBmOIPXKizAsVhWH9YJqLZ0H+HS4c8loHGgW6utJ3E/ejXQUsiGaQy2NZ9Fw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.26.8':
@@ -250,11 +250,11 @@ packages:
     resolution: {integrity: sha512-eUuWapzEGWFEpHFxgEaBG8e3n6S8L3MSu0oda755rOfabWPnh0Our1AozNFVUxGFIhbKgd1ksprsoDGMinTOTA==}
     engines: {node: '>=6.9.0'}
 
-  '@blueprintjs/colors@5.1.5':
-    resolution: {integrity: sha512-IUZvQLsQmfqumTTzeb5oQLnvskJcQYKcitzhDm5+iTWl42Jn5oyUqPDW96ubH/pfWoQGHzBp91ujq6KREl4GHQ==}
+  '@blueprintjs/colors@5.1.8':
+    resolution: {integrity: sha512-rCl+NZwR6xjJeCB6yWglbqWU2zOdVgeI5unBASalzMXWpRO0UXIjx0pA/Vtii4cB2kIdk8PaHTlGmZnLTu/MSg==}
 
-  '@blueprintjs/core@5.16.4':
-    resolution: {integrity: sha512-jgy3UJNDWPBdNn8nf2pDgzSKDJABVG4i1OPrcFJlOQl117UWMJD28/hAtyBQG1e+/6AE0a678Ko1aBmK4aWp6Q==}
+  '@blueprintjs/core@5.17.6':
+    resolution: {integrity: sha512-HwcVo0SuvLiEHq3pBC2JjsnpeWzi9eGhsMVYF/QFZNzILu6fWGkaUby/LvVuQb/UVhYsj+1BOrRm0aWEiOM8Sg==}
     hasBin: true
     peerDependencies:
       '@types/react': ^16.14.41 || 17 || 18
@@ -264,8 +264,8 @@ packages:
       '@types/react':
         optional: true
 
-  '@blueprintjs/icons@5.17.1':
-    resolution: {integrity: sha512-jdwrfDb5N0KCKGFFaJn5KrQj0ZX1hqEXHor9ewsdrSgVGOzVCg9OJ/GYVjy85McHNhN9bYyYaH+8dxablEoYRA==}
+  '@blueprintjs/icons@5.20.0':
+    resolution: {integrity: sha512-VFUL7YDjV1o9DtGlpcuMDDDfNW//iCOZiz9FVhJ6pLJLmOdX6jfIndODVdbJjTVmruNLZcSOsZITvb9Zdwh6ew==}
     peerDependencies:
       '@types/react': ^16.14.41 || 17 || 18
       react: ^16.8 || 17 || 18
@@ -4366,7 +4366,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/runtime@7.26.7':
+  '@babel/runtime@7.26.10':
     dependencies:
       regenerator-runtime: 0.14.1
 
@@ -4393,14 +4393,14 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@blueprintjs/colors@5.1.5':
+  '@blueprintjs/colors@5.1.8':
     dependencies:
       tslib: 2.6.3
 
-  '@blueprintjs/core@5.16.4(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@blueprintjs/core@5.17.6(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@blueprintjs/colors': 5.1.5
-      '@blueprintjs/icons': 5.17.1(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@blueprintjs/colors': 5.1.8
+      '@blueprintjs/icons': 5.20.0(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@popperjs/core': 2.11.8
       classnames: 2.5.1
       normalize.css: 8.0.1
@@ -4414,7 +4414,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.18
 
-  '@blueprintjs/icons@5.17.1(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@blueprintjs/icons@5.20.0(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       change-case: 4.1.2
       classnames: 2.5.1
@@ -5828,7 +5828,7 @@ snapshots:
 
   dom-helpers@5.2.1:
     dependencies:
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.26.10
       csstype: 3.1.3
 
   dot-case@3.0.4:
@@ -7271,7 +7271,7 @@ snapshots:
 
   media-query-parser@2.0.2:
     dependencies:
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.26.10
 
   media-typer@0.3.0: {}
 
@@ -7995,7 +7995,7 @@ snapshots:
 
   react-transition-group@4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.26.10
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
