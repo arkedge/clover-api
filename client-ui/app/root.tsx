@@ -11,10 +11,6 @@ import {
 import logo from "./assets/logo.svg";
 import "./tailwind.css";
 
-// These must be after the tailwind.css import
-import "@blueprintjs/core/lib/css/blueprint.css";
-import "@blueprintjs/icons/lib/css/blueprint-icons.css";
-
 export const meta: MetaFunction = () => [
   { title: "Clover UI - ArkEdge Space" },
 ];

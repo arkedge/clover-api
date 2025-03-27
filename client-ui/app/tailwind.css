@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "@blueprintjs/core/lib/css/blueprint.css" layer(base);
+@import "@blueprintjs/icons/lib/css/blueprint-icons.css" layer(base);
+
 @theme {
   --color-muted: #5f6b7c;
 }
