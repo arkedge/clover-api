@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
 
-      - uses: pnpm/action-setup@v4.0.0
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
         with:
           package_json_file: client-ui/package.json
 
@@ -45,7 +45,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
 
-      - uses: pnpm/action-setup@v4.0.0
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
         with:
           package_json_file: client-ui/package.json
 
