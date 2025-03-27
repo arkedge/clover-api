@@ -16,9 +16,10 @@
   "packageRules": [
     {
       "matchSourceUrls": [
+        "https://github.com/bufbuild/protobuf-es",
         "https://github.com/connectrpc/connect-es"
       ],
-      "groupName": "connect-es monorepo"
+      "groupName": "protobuf-es & connect-es"
     },
     {
       "matchSourceUrls": [
