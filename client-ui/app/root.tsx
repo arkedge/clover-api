@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import logo from "./assets/logo.svg";
-import "./tailwind.css";
+import "./index.css";
 
 export const meta: MetaFunction = () => [
   { title: "Clover UI - ArkEdge Space" },
