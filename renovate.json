@@ -7,7 +7,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [".github/workflows/*"],
+      "managerFilePatterns": [
+        "/^.github/workflows/.+\\.ya?ml$/"
+      ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s+\\S+?:\\s*\"(?<currentValue>\\S+?)\""
       ]
@@ -28,12 +30,21 @@
       "groupName": "blueprint monorepo"
     },
     {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": [
+        "github-actions"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "automerge": true
     }
   ],
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
   "prHourlyLimit": 0,
-  "additionalReviewers": ["sankichi92"]
+  "additionalReviewers": [
+    "sankichi92"
+  ]
 }
