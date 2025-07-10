@@ -1,6 +1,7 @@
 import {
   Breadcrumbs,
   Button,
+  ButtonVariant,
   Callout,
   Dialog,
   DialogBody,
@@ -17,7 +18,7 @@ import {
   Tag,
 } from "@blueprintjs/core";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import {
   Form,
   Link,
@@ -60,7 +61,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     );
   }
 
-  return json({ satellite, tleRecord, groundStations, contacts, passes });
+  return { satellite, tleRecord, groundStations, contacts, passes };
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
@@ -107,7 +108,7 @@ export const action = async ({ params, request }: LoaderFunctionArgs) => {
         Code.FailedPrecondition,
       ].includes(err.code)
     ) {
-      return json({ error: err.message });
+      return { error: err.message };
     } else {
       throw err;
     }
@@ -141,7 +142,11 @@ function TLESection() {
       title="TLE"
       rightElement={
         <Link to={`/satellites/${satellite.id}/tle`}>
-          <Button minimal={true} intent={Intent.PRIMARY} text="Update" />
+          <Button
+            variant={ButtonVariant.MINIMAL}
+            intent={Intent.PRIMARY}
+            text="Update"
+          />
         </Link>
       }
     >
@@ -172,7 +177,11 @@ function ContactsSection() {
       title="Upcoming Contacts"
       rightElement={
         <Link to={`/satellites/${satellite.id}/contacts`}>
-          <Button minimal={true} intent={Intent.PRIMARY} text="Past Contacts" />
+          <Button
+            variant={ButtonVariant.MINIMAL}
+            intent={Intent.PRIMARY}
+            text="Past Contacts"
+          />
         </Link>
       }
     >

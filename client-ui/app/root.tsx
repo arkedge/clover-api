@@ -1,4 +1,4 @@
-import { Alignment, Button, Navbar } from "@blueprintjs/core";
+import { Alignment, Button, ButtonVariant, Navbar } from "@blueprintjs/core";
 import { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
@@ -42,7 +42,7 @@ function HeaderNav() {
   return (
     <Navbar className="bp5-dark">
       <div className="container mx-auto">
-        <Navbar.Group align={Alignment.LEFT}>
+        <Navbar.Group align={Alignment.START}>
           <Navbar.Heading>
             <img
               src={logo}
@@ -53,7 +53,7 @@ function HeaderNav() {
           </Navbar.Heading>
           <Navbar.Divider />
           <NavLink to="/">
-            <Button minimal={true} icon="home" text="Home" />
+            <Button variant={ButtonVariant.MINIMAL} icon="home" text="Home" />
           </NavLink>
         </Navbar.Group>
       </div>

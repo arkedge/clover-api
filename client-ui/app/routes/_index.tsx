@@ -6,13 +6,13 @@ import {
   SectionCard,
 } from "@blueprintjs/core";
 import { ChevronRight } from "@blueprintjs/icons";
-import { json, Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { CloverClient } from "~/.server/CloverClient";
 
 export const loader = async () => {
   const client = new CloverClient();
   const satellites = await client.listSatellites();
-  return json({ satellites });
+  return { satellites };
 };
 
 export default function Index() {
