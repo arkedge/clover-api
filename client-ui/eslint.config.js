@@ -20,6 +20,19 @@ export default defineConfig([
 
   // TypeScript
   tseslintConfigs.recommended,
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ["eslint.config.js"],
+        },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      "@typescript-eslint/no-deprecated": "error",
+    },
+  },
 
   // plugin-react
   react.configs.flat.recommended,
