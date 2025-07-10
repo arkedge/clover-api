@@ -10,6 +10,7 @@ import {
   NonIdealStateIconSize,
   Section,
   SectionCard,
+  Size,
   Tag,
   UL,
 } from "@blueprintjs/core";
@@ -120,12 +121,12 @@ export default function ContactDetailPage() {
           />
           <ul className="flex gap-2">
             <li>
-              <Tag icon="satellite" large={true} minimal={true}>
+              <Tag icon="satellite" size={Size.LARGE} minimal={true}>
                 {satellite.name}
               </Tag>
             </li>
             <li>
-              <Tag icon="antenna" large={true} minimal={true}>
+              <Tag icon="antenna" size={Size.LARGE} minimal={true}>
                 {groundStation.name}
               </Tag>
             </li>

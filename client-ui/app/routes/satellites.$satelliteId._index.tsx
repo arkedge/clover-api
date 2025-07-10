@@ -1,6 +1,7 @@
 import {
   Breadcrumbs,
   Button,
+  ButtonVariant,
   Callout,
   Dialog,
   DialogBody,
@@ -141,7 +142,11 @@ function TLESection() {
       title="TLE"
       rightElement={
         <Link to={`/satellites/${satellite.id}/tle`}>
-          <Button minimal={true} intent={Intent.PRIMARY} text="Update" />
+          <Button
+            variant={ButtonVariant.MINIMAL}
+            intent={Intent.PRIMARY}
+            text="Update"
+          />
         </Link>
       }
     >
@@ -172,7 +177,11 @@ function ContactsSection() {
       title="Upcoming Contacts"
       rightElement={
         <Link to={`/satellites/${satellite.id}/contacts`}>
-          <Button minimal={true} intent={Intent.PRIMARY} text="Past Contacts" />
+          <Button
+            variant={ButtonVariant.MINIMAL}
+            intent={Intent.PRIMARY}
+            text="Past Contacts"
+          />
         </Link>
       }
     >
