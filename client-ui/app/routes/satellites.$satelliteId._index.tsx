@@ -18,7 +18,7 @@ import {
   Tag,
 } from "@blueprintjs/core";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import {
   Form,
   Link,
@@ -61,7 +61,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     );
   }
 
-  return json({ satellite, tleRecord, groundStations, contacts, passes });
+  return { satellite, tleRecord, groundStations, contacts, passes };
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
@@ -108,7 +108,7 @@ export const action = async ({ params, request }: LoaderFunctionArgs) => {
         Code.FailedPrecondition,
       ].includes(err.code)
     ) {
-      return json({ error: err.message });
+      return { error: err.message };
     } else {
       throw err;
     }

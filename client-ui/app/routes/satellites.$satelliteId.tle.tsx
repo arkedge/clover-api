@@ -9,7 +9,7 @@ import {
   TextArea,
 } from "@blueprintjs/core";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import {
   Form,
   redirect,
@@ -35,7 +35,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     throw new Response(null, { status: 404, statusText: "Not Found" });
   }
 
-  return json({ satellite });
+  return { satellite };
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
@@ -69,7 +69,7 @@ export const action = async ({ params, request }: LoaderFunctionArgs) => {
       err instanceof ConnectError &&
       [Code.InvalidArgument, Code.AlreadyExists].includes(err.code)
     ) {
-      return json({ error: err.message });
+      return { error: err.message };
     } else {
       throw err;
     }

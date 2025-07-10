@@ -16,7 +16,7 @@ import {
 } from "@blueprintjs/core";
 import { Add, Document, Updated } from "@blueprintjs/icons";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { json, LoaderFunctionArgs } from "@remix-run/node";
+import { LoaderFunctionArgs } from "@remix-run/node";
 import {
   Form,
   Link,
@@ -55,7 +55,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     blobFiles = await client.listContactBlobFiles(contactId);
   }
 
-  return json({ contact, satellite, groundStation, blobFiles });
+  return { contact, satellite, groundStation, blobFiles };
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [

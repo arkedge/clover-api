@@ -1,5 +1,5 @@
 import { Breadcrumbs, Section } from "@blueprintjs/core";
-import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";
@@ -22,7 +22,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   const groundStations = await client.listAvailableGroundStations(satelliteId);
   const contacts = await client.listPastContacts(satelliteId);
 
-  return json({ satellite, groundStations, contacts });
+  return { satellite, groundStations, contacts };
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
