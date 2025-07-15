@@ -131,7 +131,7 @@ export default function ContactDetailPage() {
               </Tag>
             </li>
           </ul>
-          <ul className="bp5-text-muted">
+          <ul className="bp6-text-muted">
             <li>
               <Add title="Create Time" /> {contact.createTime}
             </li>

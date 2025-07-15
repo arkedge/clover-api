@@ -40,7 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 function HeaderNav() {
   return (
-    <Navbar className="bp5-dark">
+    <Navbar className="bp6-dark">
       <div className="container mx-auto">
         <Navbar.Group align={Alignment.START}>
           <Navbar.Heading>
