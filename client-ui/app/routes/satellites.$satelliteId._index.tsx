@@ -157,7 +157,7 @@ function TLESection() {
             <br />
             {tleRecord.tle!.line2}
           </Pre>
-          <p className="bp5-text-muted mt-4">
+          <p className="bp6-text-muted mt-4">
             Registered: {tleRecord.registerTime}
           </p>
         </SectionCard>
