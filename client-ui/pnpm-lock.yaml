@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@blueprintjs/core':
         specifier: ^6.0.0
-        version: 6.0.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.1.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@blueprintjs/icons':
         specifier: ^6.0.0
         version: 6.0.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -256,8 +256,8 @@ packages:
   '@blueprintjs/colors@5.1.8':
     resolution: {integrity: sha512-rCl+NZwR6xjJeCB6yWglbqWU2zOdVgeI5unBASalzMXWpRO0UXIjx0pA/Vtii4cB2kIdk8PaHTlGmZnLTu/MSg==}
 
-  '@blueprintjs/core@6.0.0':
-    resolution: {integrity: sha512-3CHrR6Tmo0X6vzs0oKGuFmh2EeQcXqLMqr5ZW2QhoXJ0imY6FwsuKwtjAqYdOTjcA+ZUNxpHbvBpoJ21S0YKjQ==}
+  '@blueprintjs/core@6.1.0':
+    resolution: {integrity: sha512-ltsZ9qJwn8TFOPAXA7/5aV8k+aSQX2WYamZPGTIUzXJO18RCO0NsnpPTfq36GiTxumKZjdT3W56iP2Q2n9gsOw==}
     hasBin: true
     peerDependencies:
       '@types/react': '18'
@@ -4566,7 +4566,7 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  '@blueprintjs/core@6.0.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@blueprintjs/core@6.1.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@blueprintjs/colors': 5.1.8
       '@blueprintjs/icons': 6.0.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
