@@ -16,13 +16,13 @@ importers:
         version: 6.0.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@bufbuild/protobuf':
         specifier: ^2.2.2
-        version: 2.6.0
+        version: 2.6.1
       '@connectrpc/connect':
         specifier: ^2.0.0-rc.3
-        version: 2.0.2(@bufbuild/protobuf@2.6.0)
+        version: 2.0.2(@bufbuild/protobuf@2.6.1)
       '@connectrpc/connect-node':
         specifier: ^2.0.0-rc.3
-        version: 2.0.2(@bufbuild/protobuf@2.6.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.6.0))
+        version: 2.0.2(@bufbuild/protobuf@2.6.1)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.6.1))
       '@remix-run/node':
         specifier: ^2.13.1
         version: 2.16.8(typescript@5.8.3)
@@ -50,7 +50,7 @@ importers:
         version: 1.55.1
       '@bufbuild/protoc-gen-es':
         specifier: ^2.2.2
-        version: 2.6.0(@bufbuild/protobuf@2.6.0)
+        version: 2.6.1(@bufbuild/protobuf@2.6.1)
       '@eslint/js':
         specifier: ^9.29.0
         version: 9.31.0
@@ -324,21 +324,21 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  '@bufbuild/protobuf@2.6.0':
-    resolution: {integrity: sha512-6cuonJVNOIL7lTj5zgo/Rc2bKAo4/GvN+rKCrUj7GdEHRzCk8zKOfFwUsL9nAVk5rSIsRmlgcpLzTRysopEeeg==}
+  '@bufbuild/protobuf@2.6.1':
+    resolution: {integrity: sha512-DaG6XlyKpz08bmHY5SGX2gfIllaqtDJ/KwVoxsmP22COOLYwDBe7yD3DZGwXem/Xq7QOc9cuR7R3MpAv5CFfDw==}
 
-  '@bufbuild/protoc-gen-es@2.6.0':
-    resolution: {integrity: sha512-sKvgGndyw1stawiDKMLZyilj1BzMuUTlvyrBiDnzxGIjCMK4hoE0DsVBiqCuTFqENnLmEGdy+huOZ5KgQAGlFA==}
+  '@bufbuild/protoc-gen-es@2.6.1':
+    resolution: {integrity: sha512-LIxXANgj27QHGZrCekfB/v9zEWzuxDBQyE+91BjY7KbvrELcNQyN0kFGRLy/Eu2bLC4+n1hlCL9TIjN49wV2Fw==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
-      '@bufbuild/protobuf': 2.6.0
+      '@bufbuild/protobuf': 2.6.1
     peerDependenciesMeta:
       '@bufbuild/protobuf':
         optional: true
 
-  '@bufbuild/protoplugin@2.6.0':
-    resolution: {integrity: sha512-mfAwI+4GqUtbw/ddfyolEHaAL86ozRIVlOg2A+SVRbjx1CjsMc1YJO+hBSkt/pqfpR+PmWBbZLstHbXP8KGtMQ==}
+  '@bufbuild/protoplugin@2.6.1':
+    resolution: {integrity: sha512-pheV/ysWCMSCyRnR7oE2qjEM2QEFFkwYOtHaS86VbxbGfSohcw64rorU7ldCVFZHlFjIsSAqd/yIuTy4J3Itlg==}
 
   '@connectrpc/connect-node@2.0.2':
     resolution: {integrity: sha512-33Ut3SRkb6SugpwVCtXXRvUrOdtiyG6z6d5+eijBOLOI75sw1tDCwcs0o/9WL3rUj1M08dLUrPmJB47fjpv6EA==}
@@ -4623,32 +4623,32 @@ snapshots:
       '@bufbuild/buf-win32-arm64': 1.55.1
       '@bufbuild/buf-win32-x64': 1.55.1
 
-  '@bufbuild/protobuf@2.6.0': {}
+  '@bufbuild/protobuf@2.6.1': {}
 
-  '@bufbuild/protoc-gen-es@2.6.0(@bufbuild/protobuf@2.6.0)':
+  '@bufbuild/protoc-gen-es@2.6.1(@bufbuild/protobuf@2.6.1)':
     dependencies:
-      '@bufbuild/protoplugin': 2.6.0
+      '@bufbuild/protoplugin': 2.6.1
     optionalDependencies:
-      '@bufbuild/protobuf': 2.6.0
+      '@bufbuild/protobuf': 2.6.1
     transitivePeerDependencies:
       - supports-color
 
-  '@bufbuild/protoplugin@2.6.0':
+  '@bufbuild/protoplugin@2.6.1':
     dependencies:
-      '@bufbuild/protobuf': 2.6.0
+      '@bufbuild/protobuf': 2.6.1
       '@typescript/vfs': 1.6.1(typescript@5.4.5)
       typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
 
-  '@connectrpc/connect-node@2.0.2(@bufbuild/protobuf@2.6.0)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.6.0))':
+  '@connectrpc/connect-node@2.0.2(@bufbuild/protobuf@2.6.1)(@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.6.1))':
     dependencies:
-      '@bufbuild/protobuf': 2.6.0
-      '@connectrpc/connect': 2.0.2(@bufbuild/protobuf@2.6.0)
+      '@bufbuild/protobuf': 2.6.1
+      '@connectrpc/connect': 2.0.2(@bufbuild/protobuf@2.6.1)
 
-  '@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.6.0)':
+  '@connectrpc/connect@2.0.2(@bufbuild/protobuf@2.6.1)':
     dependencies:
-      '@bufbuild/protobuf': 2.6.0
+      '@bufbuild/protobuf': 2.6.1
 
   '@emnapi/core@1.4.3':
     dependencies:
