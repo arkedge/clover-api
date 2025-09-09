@@ -37,7 +37,7 @@
         "minor",
         "patch"
       ],
-      "automerge": true
+      "automerge": false
     }
   ],
   "labels": [
