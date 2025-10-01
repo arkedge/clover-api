@@ -52,7 +52,7 @@ service CloverService {
   rpc ListContactBlobFiles(ListContactBlobFilesRequest) returns (ListContactBlobFilesResponse);
 
   // 指定した地上局で現在実行中のコンタクトを取得する 。
-  rpc GetCurrentContact(GetCurrentContactRequest) returns (GetCurrentContactResponse);
+  rpc GetActiveContact(GetActiveContactRequest) returns (GetActiveContactResponse);
 }
 
 message ListSatellitesRequest {}
@@ -193,12 +193,13 @@ message ListContactBlobFilesResponse {
   repeated aegs.clover.v1.BlobFile blob_files = 1;
 }
 
-message GetCurrentContactRequest {
-  // 実行中のコンタクトを取得する地上局の ID
+message GetActiveContactRequest {
+  // 指定した時刻に実行中のコンタクトを取得する地上局の ID
   int64 ground_station_id = 1;
+  google.protobuf.Timestamp at = 2;
 }
 
-message GetCurrentContactResponse {
+message GetActiveContactResponse {
   // 指定された地上局で実行中のコンタクト。
   // コンタクト中でない場合は null になる。
   aegs.clover.v1.Contact contact = 1;
