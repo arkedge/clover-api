@@ -51,7 +51,7 @@ export default defineConfig([
   },
 
   // plugin-react-hooks
-  reactHooks.configs["recommended-latest"],
+  reactHooks.configs.flat.recommended,
 
   // plugin-import
   importPlugin.flatConfigs.recommended,
