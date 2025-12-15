@@ -26,7 +26,7 @@ Protocol Buffers と gRPC の TypeScript 実装として [Protobuf-ES](https://g
 コンテナイメージから Clover UI を起動するには、以下の 3 つの環境変数を起動時に渡す必要があります。
 
 - `CLOVER_BASE_URL`: HTTP over TLS プロトコルの Clover の URL
-- `CLOVER_CLIENT_CERT`: クライアント TLS 証明書
+- `CLOVER_CLIENT_CERT`: クライアント証明書
 - `CLOVER_KEY`: 証明書に対応する秘密鍵
 
 [認証](authentication.md)の節で説明されているとおり、これらの値はクライアントの登録時にアークエッジ・スペースの担当者から送付されます。
@@ -34,7 +34,7 @@ Protocol Buffers と gRPC の TypeScript 実装として [Protobuf-ES](https://g
 ここでは、前節までと同様に以下を仮定することにします。
 
 - ホスト名: `clover.example.com`
-- TLS 証明書のパス: `./cert.pem`
+- クライアント証明書のパス: `./cert.pem`
 - 秘密鍵のパス: `./secret.pem`
 
 すると、次のコマンドで GitHub Container registry のコンテナイメージから Clover UI を起動できます。
