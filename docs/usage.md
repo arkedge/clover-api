@@ -22,7 +22,7 @@ grpcurl 1.9.1
 また、通信・認証のための情報は、前節と同様に以下を仮定します。
 
 - ホスト名: `clover.example.com`
-- TLS 証明書のパス: `./cert.pem`
+- クライアント証明書のパス: `./cert.pem`
 - 秘密鍵のパス: `./secret.pem`
 
 本説の説明は、Clover API の最低限の使い方を説明することを目的としているため、より詳しいインタフェースについては API リファレンスに相当する [Protocol Documentation](proto.md) を参照してください。
