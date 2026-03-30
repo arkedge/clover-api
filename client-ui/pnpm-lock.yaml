@@ -28,7 +28,7 @@ importers:
         version: 2.17.2(typescript@5.9.3)
       '@remix-run/react':
         specifier: ^2.13.1
-        version: 2.17.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+        version: 2.17.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
       '@remix-run/serve':
         specifier: ^2.13.1
         version: 2.17.2(typescript@5.9.3)
@@ -56,7 +56,7 @@ importers:
         version: 9.39.1
       '@remix-run/dev':
         specifier: ^2.13.1
-        version: 2.17.2(@remix-run/react@2.17.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(@remix-run/serve@2.17.2(typescript@5.9.3))(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(typescript@5.9.3)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))(yaml@2.8.1)
+        version: 2.17.2(@remix-run/react@2.17.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(@remix-run/serve@2.17.2(typescript@5.9.3))(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(typescript@5.9.3)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))(yaml@2.8.1)
       '@tailwindcss/vite':
         specifier: ^4.0.6
         version: 4.1.17(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))
@@ -947,8 +947,8 @@ packages:
       typescript:
         optional: true
 
-  '@remix-run/react@2.17.2':
-    resolution: {integrity: sha512-/s/PYqDjTsQ/2bpsmY3sytdJYXuFHwPX3IRHKcM+UZXFRVGPKF5dgGuvCfb+KW/TmhVKNgpQv0ybCoGpCuF6aA==}
+  '@remix-run/react@2.17.3':
+    resolution: {integrity: sha512-Ns4YmtuRZpsgoUoq39K/lhPJ92/N2JkMBHIRPINNZ6/o9MiT7cN1qMwjGoqVfoCy6ZFCpMadsw4sPrwMGdkZiQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^18.0.0
@@ -969,6 +969,15 @@ packages:
 
   '@remix-run/server-runtime@2.17.2':
     resolution: {integrity: sha512-dTrAG1SgOLgz1DFBDsLHN0V34YqLsHEReVHYOI4UV/p+ALbn/BRQMw1MaUuqGXmX21ZTuCzzPegtTLNEOc8ixA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@remix-run/server-runtime@2.17.3':
+    resolution: {integrity: sha512-8uuV0COprImDpyDB8Rx0VLDKxsttBsMjtdv9BFViz8WfJz79jr8YRfp27hXUs9P4/NU6+wQQYcJawkBj/5uuSg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       typescript: ^5.1.0
@@ -2308,6 +2317,7 @@ packages:
 
   glob@10.5.0:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   globals@14.0.0:
@@ -3840,6 +3850,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   through2@2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==}
@@ -4931,7 +4942,7 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@remix-run/dev@2.17.2(@remix-run/react@2.17.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(@remix-run/serve@2.17.2(typescript@5.9.3))(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(typescript@5.9.3)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))(yaml@2.8.1)':
+  '@remix-run/dev@2.17.2(@remix-run/react@2.17.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(@remix-run/serve@2.17.2(typescript@5.9.3))(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(typescript@5.9.3)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.1))(yaml@2.8.1)':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/generator': 7.28.5
@@ -4944,7 +4955,7 @@ snapshots:
       '@mdx-js/mdx': 2.3.0
       '@npmcli/package-json': 4.0.1
       '@remix-run/node': 2.17.2(typescript@5.9.3)
-      '@remix-run/react': 2.17.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
+      '@remix-run/react': 2.17.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)
       '@remix-run/router': 1.23.0
       '@remix-run/server-runtime': 2.17.2(typescript@5.9.3)
       '@types/mdx': 2.0.13
@@ -5032,10 +5043,10 @@ snapshots:
     optionalDependencies:
       typescript: 5.9.3
 
-  '@remix-run/react@2.17.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)':
+  '@remix-run/react@2.17.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3)':
     dependencies:
       '@remix-run/router': 1.23.0
-      '@remix-run/server-runtime': 2.17.2(typescript@5.9.3)
+      '@remix-run/server-runtime': 2.17.3(typescript@5.9.3)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
       react-router: 6.30.0(react@19.2.0)
@@ -5061,6 +5072,18 @@ snapshots:
       - typescript
 
   '@remix-run/server-runtime@2.17.2(typescript@5.9.3)':
+    dependencies:
+      '@remix-run/router': 1.23.0
+      '@types/cookie': 0.6.0
+      '@web3-storage/multipart-parser': 1.0.0
+      cookie: 0.7.2
+      set-cookie-parser: 2.7.2
+      source-map: 0.7.6
+      turbo-stream: 2.4.1
+    optionalDependencies:
+      typescript: 5.9.3
+
+  '@remix-run/server-runtime@2.17.3(typescript@5.9.3)':
     dependencies:
       '@remix-run/router': 1.23.0
       '@types/cookie': 0.6.0
