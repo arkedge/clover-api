@@ -1,5 +1,4 @@
-import { PassThrough } from "node:stream";
-import type { Readable } from "node:stream";
+import { PassThrough, Readable } from "node:stream";
 
 import type { AppLoadContext, EntryContext } from "react-router";
 import { ServerRouter } from "react-router";
@@ -7,16 +6,6 @@ import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 
 const ABORT_DELAY = 5_000;
-
-function createReadableStreamFromReadable(readable: Readable): ReadableStream {
-  return new ReadableStream({
-    start(controller) {
-      readable.on("data", (chunk) => controller.enqueue(chunk));
-      readable.on("end", () => controller.close());
-      readable.on("error", (err) => controller.error(err));
-    },
-  });
-}
 
 export default function handleRequest(
   request: Request,
@@ -55,7 +44,7 @@ function handleBotRequest(
         onAllReady() {
           shellRendered = true;
           const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
+          const stream = Readable.toWeb(body) as unknown as ReadableStream;
 
           responseHeaders.set("Content-Type", "text/html");
 
@@ -98,7 +87,7 @@ function handleBrowserRequest(
         onShellReady() {
           shellRendered = true;
           const body = new PassThrough();
-          const stream = createReadableStreamFromReadable(body);
+          const stream = Readable.toWeb(body) as unknown as ReadableStream;
 
           responseHeaders.set("Content-Type", "text/html");
 
