@@ -16,14 +16,14 @@ import {
 } from "@blueprintjs/core";
 import { Add, Document, Updated } from "@blueprintjs/icons";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { LoaderFunctionArgs } from "@remix-run/node";
 import {
   Form,
   Link,
+  LoaderFunctionArgs,
   MetaFunction,
   useLoaderData,
   useNavigation,
-} from "@remix-run/react";
+} from "react-router";
 import assert from "node:assert";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";

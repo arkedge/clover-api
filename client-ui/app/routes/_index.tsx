@@ -6,7 +6,7 @@ import {
   SectionCard,
 } from "@blueprintjs/core";
 import { ChevronRight } from "@blueprintjs/icons";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "react-router";
 import { CloverClient } from "~/.server/CloverClient";
 
 export const loader = async () => {

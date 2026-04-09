@@ -1,6 +1,5 @@
 import { Breadcrumbs, Section } from "@blueprintjs/core";
-import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { LoaderFunctionArgs, MetaFunction, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";
 import { ContactTable } from "~/components/ContactTable";

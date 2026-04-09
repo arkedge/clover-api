@@ -1,5 +1,5 @@
 import { Alignment, Button, ButtonVariant, Navbar } from "@blueprintjs/core";
-import { LinksFunction, MetaFunction } from "@remix-run/node";
+import { LinksFunction, MetaFunction } from "react-router";
 import {
   Links,
   Meta,
@@ -7,7 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+} from "react-router";
 import logo from "./assets/logo.svg";
 import "./index.css";
 
