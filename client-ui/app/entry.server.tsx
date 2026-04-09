@@ -1,5 +1,6 @@
-import { PassThrough, Readable } from "node:stream";
+import { PassThrough } from "node:stream";
 
+import { createReadableStreamFromReadable } from "@react-router/node";
 import type { AppLoadContext, EntryContext } from "react-router";
 import { ServerRouter } from "react-router";
 import { isbot } from "isbot";
@@ -44,7 +45,7 @@ function handleBotRequest(
         onAllReady() {
           shellRendered = true;
           const body = new PassThrough();
-          const stream = Readable.toWeb(body) as unknown as ReadableStream;
+          const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
 
@@ -87,7 +88,7 @@ function handleBrowserRequest(
         onShellReady() {
           shellRendered = true;
           const body = new PassThrough();
-          const stream = Readable.toWeb(body) as unknown as ReadableStream;
+          const stream = createReadableStreamFromReadable(body);
 
           responseHeaders.set("Content-Type", "text/html");
 
