@@ -24,8 +24,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return { satellite, groundStations, contacts };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => [
-  { title: `${data?.satellite.name} Past Contacts` },
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
+  { title: `${loaderData?.satellite.name} Past Contacts` },
 ];
 
 export default function SatelliteTLEPage() {

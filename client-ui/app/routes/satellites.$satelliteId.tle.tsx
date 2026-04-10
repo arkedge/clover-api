@@ -39,8 +39,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return { satellite };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => [
-  { title: `${data?.satellite.name} TLE` },
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
+  { title: `${loaderData?.satellite.name} TLE` },
 ];
 
 export const action = async ({ params, request }: LoaderFunctionArgs) => {

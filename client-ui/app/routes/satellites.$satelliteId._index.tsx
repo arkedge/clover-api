@@ -65,8 +65,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return { satellite, tleRecord, groundStations, contacts, passes };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => [
-  { title: data?.satellite.name },
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
+  { title: loaderData?.satellite.name },
 ];
 
 export const action = async ({ params, request }: LoaderFunctionArgs) => {

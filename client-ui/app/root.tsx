@@ -1,8 +1,9 @@
 import { Alignment, Button, ButtonVariant, Navbar } from "@blueprintjs/core";
-import { LinksFunction, MetaFunction } from "react-router";
 import {
   Links,
+  type LinksFunction,
   Meta,
+  type MetaFunction,
   NavLink,
   Outlet,
   Scripts,

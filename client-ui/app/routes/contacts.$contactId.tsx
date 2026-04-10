@@ -58,8 +58,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return { contact, satellite, groundStation, blobFiles };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => [
-  { title: `Contact ${data?.contact.id}` },
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
+  { title: `Contact ${loaderData?.contact.id}` },
 ];
 
 export const action = async ({ params }: LoaderFunctionArgs) => {
