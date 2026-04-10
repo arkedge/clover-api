@@ -1,4 +1,4 @@
-// https://remix.run/docs/en/main/guides/manual-mode#keeping-in-memory-server-state-across-rebuilds
+// https://reactrouter.com/explanation/special-files#extracting-a-singleton-module
 export const singleton = <Value>(
   name: string,
   valueFactory: () => Value,
