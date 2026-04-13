@@ -9,14 +9,15 @@ import {
   TextArea,
 } from "@blueprintjs/core";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import {
   Form,
+  LoaderFunctionArgs,
+  MetaFunction,
   redirect,
   useActionData,
   useLoaderData,
   useNavigation,
-} from "@remix-run/react";
+} from "react-router";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";
 
@@ -38,8 +39,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return { satellite };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => [
-  { title: `${data?.satellite.name} TLE` },
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
+  { title: `${loaderData?.satellite.name} TLE` },
 ];
 
 export const action = async ({ params, request }: LoaderFunctionArgs) => {

@@ -16,14 +16,14 @@ import {
 } from "@blueprintjs/core";
 import { Add, Document, Updated } from "@blueprintjs/icons";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { LoaderFunctionArgs } from "@remix-run/node";
 import {
   Form,
   Link,
+  LoaderFunctionArgs,
   MetaFunction,
   useLoaderData,
   useNavigation,
-} from "@remix-run/react";
+} from "react-router";
 import assert from "node:assert";
 import invariant from "tiny-invariant";
 import { CloverClient } from "~/.server/CloverClient";
@@ -58,8 +58,8 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   return { contact, satellite, groundStation, blobFiles };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => [
-  { title: `Contact ${data?.contact.id}` },
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
+  { title: `Contact ${loaderData?.contact.id}` },
 ];
 
 export const action = async ({ params }: LoaderFunctionArgs) => {

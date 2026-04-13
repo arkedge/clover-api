@@ -5,7 +5,7 @@ Clover API クライアントの GUI 参考実装。
 ## 技術スタック
 
 - gRPC クライアント: [Protobuf-ES](https://github.com/bufbuild/protobuf-es) & [Connect-ES](https://github.com/connectrpc/connect-es)
-- Web フレームワーク: [Remix](https://remix.run/docs)
+- Web フレームワーク: [React Router v7](https://reactrouter.com/)
 - UI ライブラリ: [Blueprint](https://blueprintjs.com/docs/) & [Tailwind CSS](https://tailwindcss.com/docs/)
 
 ## 開発

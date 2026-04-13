@@ -1,5 +1,5 @@
 import { HTMLTable } from "@blueprintjs/core";
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 import { ContactJson, GroundStationJson } from "~/gen/aegs/clover/v1/models_pb";
 import { ContactStatusTag } from "./ContactStatusTag";
 
