@@ -101,6 +101,8 @@ message RegisterTLEResponse {
 message GetLatestOMMRequest {
   // OMM を取得する衛星の ID
   int64 satellite_id = 1;
+  // OMM のフォーマット
+  aegs.clover.v1.OmmFormat omm_format = 2;
 }
 
 message GetLatestOMMResponse {
@@ -111,12 +113,16 @@ message GetLatestOMMResponse {
 message RegisterOMMRequest {
   // OMM を登録する衛星の ID
   int64 satellite_id = 1;
-  // 登録する OMM（KVN形式）
-  string kvn = 2;
+  // 登録する OMM
+  oneof omm {
+    // 登録する OMM（KVN形式）
+    string kvn = 2;
+  }
 }
 
 message RegisterOMMResponse {
-  // 登録された OMM の情報
+  // 登録された OMM の情報。
+  // 形式はリクエストで登録された OMM の形式と同じ。
   aegs.clover.v1.OMMRecord omm_record = 1;
 }
 
