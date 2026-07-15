@@ -44,7 +44,7 @@ message OMMRecord {
 }
 
 // OMM のフォーマット。
-enum OmmFormat {
+enum OMMFormat {
   // OMM のフォーマットが指定されていない場合の値。
   // リクエストでこの値が指定された場合は、INVALID_ARGUMENT エラーを返す。
   OMM_FORMAT_UNSPECIFIED = 0;

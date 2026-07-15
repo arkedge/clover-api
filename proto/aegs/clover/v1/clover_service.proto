@@ -102,7 +102,7 @@ message GetLatestOMMRequest {
   // OMM を取得する衛星の ID
   int64 satellite_id = 1;
   // OMM のフォーマット
-  aegs.clover.v1.OmmFormat omm_format = 2;
+  aegs.clover.v1.OMMFormat omm_format = 2;
 }
 
 message GetLatestOMMResponse {
