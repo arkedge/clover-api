@@ -5,6 +5,7 @@
 1. OMM または TLE（以下、軌道情報）の登録
 2. 予約可能なパスの取得
 3. コンタクトの作成
+4. コンタクト中のデータの取得
 
 Clover API は [Protocol Buffers](https://protobuf.dev/) で定義されているため、これをもとに各種プログラミング言語のクライアントコードを生成できます。
 しかし、ここでは特定のプログラミング言語を用いるのではなく、前節に引き続き [grpcurl](https://github.com/fullstorydev/grpcurl) を用いて説明します。
@@ -31,7 +32,6 @@ grpcurl 1.9.3
 
 はじめに、衛星の OMM を Clover に登録します。
 OMM（Orbit Mean-Elements Message）は、CCSDS が定義する軌道要素のメッセージ形式です。
-TLE より新しい形式であり、より大きな衛星カタログ番号や詳細な軌道情報を扱えます。
 新しく軌道情報を登録する場合は、基本的に OMM の利用をおすすめします。
 
 メソッド `RegisterOMM` にパラメータとして、対象の衛星の ID `satellite_id` と、登録する OMM を渡します。
@@ -71,7 +71,8 @@ OMM が登録できていれば、以下のように登録した OMM が返る�
 
 > **TLE の扱いについて**
 >
-> TLE は互換性のために現在も利用可能な軌道情報の形式であり、Clover では当面の間 Alpha-5 を含む TLE をサポートします。一方で、TLE は固定長の古い形式であり、従来の衛星カタログ番号の範囲は今後枯渇する見込みです。また、表現精度にも制約があります。新しく軌道情報を登録する場合や、より大きなカタログ番号、詳細な軌道情報を扱う場合は、OMM 形式をおすすめします。
+> TLE は互換性のために現在も利用可能な軌道情報の形式であり、Clover では当面の間 Alpha-5 を含む TLE をサポートします。  
+> 新しく軌道情報を登録する場合は、基本的に OMM 形式をおすすめします。
 
 メソッド `RegisterTLE` にパラメータとして、対象の衛星の ID `satellite_id` と、TLE の各行を `line1`、`line2` のフィールドに分けて渡します。
 ここで、`satellite_id` は仮に 42 とし、TLE には執筆時点の国際宇宙ステーション（ISS）のものを用いることにします。
@@ -180,7 +181,7 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 ```console
 $ grpcurl -cert ./cert.pem -key ./secret.pem \
   -d '{"satellite_id":42,"ground_station_id":1,"aos":"2024-10-17T18:58:01Z","los":"2024-10-17T19:08:18Z"}' \
-  clover.example.com:443 aegs.clover.v1.CloverService/ListPasses
+  clover.example.com:443 aegs.clover.v1.CloverService/CreateContact
 ```
 
 コンタクトの作成に成功すると、作成されたコンタクトの情報が返ります。
