@@ -20,6 +20,13 @@ service CloverService {
   // TLE が不正な場合は INVALID_ARGUMENT (3) が、最新の TLE と同じものを登録しようとした場合は ALREADY_EXISTS (6) のエラーが返る。
   rpc RegisterTLE(RegisterTLERequest) returns (RegisterTLEResponse);
 
+  // 指定した衛星の最新の OMM を取得する。
+  rpc GetLatestOMM(GetLatestOMMRequest) returns (GetLatestOMMResponse);
+
+  // 指定した衛星の OMM を登録する。
+  // OMM が不正な場合は INVALID_ARGUMENT (3) が、最新の OMM と同じものを登録しようとした場合は ALREADY_EXISTS (6) のエラーが返る。
+  rpc RegisterOMM(RegisterOMMRequest) returns (RegisterOMMResponse);
+
   // 指定した衛星について利用可能な地上局のリストを取得する。
   rpc ListAvailableGroundStations(ListAvailableGroundStationsRequest) returns (ListAvailableGroundStationsResponse);
 
@@ -89,6 +96,34 @@ message RegisterTLERequest {
 message RegisterTLEResponse {
   // 登録された TLE の情報
   aegs.clover.v1.TLERecord tle_record = 1;
+}
+
+message GetLatestOMMRequest {
+  // OMM を取得する衛星の ID
+  int64 satellite_id = 1;
+  // OMM のフォーマット
+  aegs.clover.v1.OMMFormat omm_format = 2;
+}
+
+message GetLatestOMMResponse {
+  // 指定された衛星の最新の OMM 情報
+  aegs.clover.v1.OMMRecord omm_record = 1;
+}
+
+message RegisterOMMRequest {
+  // OMM を登録する衛星の ID
+  int64 satellite_id = 1;
+  // 登録する OMM
+  oneof omm {
+    // 登録する OMM（KVN形式）
+    string kvn = 2;
+  }
+}
+
+message RegisterOMMResponse {
+  // 登録された OMM の情報。
+  // 形式はリクエストで登録された OMM の形式と同じ。
+  aegs.clover.v1.OMMRecord omm_record = 1;
 }
 
 message ListAvailableGroundStationsRequest {

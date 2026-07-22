@@ -2,9 +2,10 @@
 
 この節では、Clover API を用いて以下の操作を行う方法を説明します。
 
-1. TLE の登録
+1. OMM または TLE（以下、軌道情報）の登録
 2. 予約可能なパスの取得
 3. コンタクトの作成
+4. コンタクト中のデータの取得
 
 Clover API は [Protocol Buffers](https://protobuf.dev/) で定義されているため、これをもとに各種プログラミング言語のクライアントコードを生成できます。
 しかし、ここでは特定のプログラミング言語を用いるのではなく、前節に引き続き [grpcurl](https://github.com/fullstorydev/grpcurl) を用いて説明します。
@@ -16,7 +17,7 @@ grpcurl は、コマンドラインツールとしてシンプルなインタフ
 
 ```console
 $ grpcurl -version
-grpcurl 1.9.1
+grpcurl 1.9.3
 ```
 
 また、通信・認証のための情報は、前節と同様に以下を仮定します。
@@ -27,9 +28,52 @@ grpcurl 1.9.1
 
 本説の説明は、Clover API の最低限の使い方を説明することを目的としているため、より詳しいインタフェースについては API リファレンスに相当する [Protocol Documentation](proto.md) を参照してください。
 
-## TLE の登録
+## OMM の登録
 
-はじめに、衛星の TLE を Clover に登録します。
+はじめに、衛星の OMM を Clover に登録します。
+OMM（Orbit Mean-Elements Message）は、CCSDS が定義する軌道要素のメッセージ形式です。
+新しく軌道情報を登録する場合は、基本的に OMM の利用をおすすめします。
+
+メソッド `RegisterOMM` にパラメータとして、対象の衛星の ID `satellite_id` と、登録する OMM を渡します。
+現在は KVN（Keyword Value Notation）形式の OMM に対応しているため、`kvn` フィールドに OMM の内容を文字列として指定します。
+ここで、`satellite_id` は仮に 42 とし、OMM には執筆時点の国際宇宙ステーション（ISS）のものを用いることにします。
+
+```console
+$ grpcurl -cert ./cert.pem -key ./secret.pem \
+  -d '{"satellite_id":42,"kvn":"CCSDS_OMM_VERS = 2.0\nOBJECT_NAME = ISS (ZARYA)\nOBJECT_ID = 1998-067A\nCENTER_NAME = EARTH\nREF_FRAME = TEME\nTIME_SYSTEM = UTC\nMEAN_ELEMENT_THEORY = SGP4\nEPOCH = 2024-10-17T04:57:09.000000\nMEAN_MOTION = 15.49966283\nECCENTRICITY = 0.0009135\nINCLINATION = 51.6384\nRA_OF_ASC_NODE = 71.0223\nARG_OF_PERICENTER = 77.3827\nMEAN_ANOMALY = 282.8183\nEPHEMERIS_TYPE = 0\nCLASSIFICATION_TYPE = U\nNORAD_CAT_ID = 25544\nELEMENT_SET_NO = 999\nREV_AT_EPOCH = 47747\nBSTAR = 0.00044173"}' \
+  clover.example.com:443 aegs.clover.v1.CloverService/RegisterOMM
+```
+
+登録した最新の OMM はメソッド `GetLatestOMM` で確認できます。
+取得する OMM の形式は `omm_format` で指定します。現在は `OMM_FORMAT_KVN` に対応しています。
+
+```console
+$ grpcurl -cert ./cert.pem -key ./secret.pem \
+  -d '{"satellite_id":42,"omm_format":"OMM_FORMAT_KVN"}' \
+  clover.example.com:443 aegs.clover.v1.CloverService/GetLatestOMM
+```
+
+OMM が登録できていれば、以下のように登録した OMM が返るはずです。
+
+```json
+{
+  "ommRecord": {
+    "id": "100",
+    "kvn": "CCSDS_OMM_VERS = 2.0\nOBJECT_NAME = ISS (ZARYA)\nOBJECT_ID = 1998-067A\nCENTER_NAME = EARTH\nREF_FRAME = TEME\nTIME_SYSTEM = UTC\nMEAN_ELEMENT_THEORY = SGP4\nEPOCH = 2024-10-17T04:57:09.000000\nMEAN_MOTION = 15.49966283\nECCENTRICITY = 0.0009135\nINCLINATION = 51.6384\nRA_OF_ASC_NODE = 71.0223\nARG_OF_PERICENTER = 77.3827\nMEAN_ANOMALY = 282.8183\nEPHEMERIS_TYPE = 0\nCLASSIFICATION_TYPE = U\nNORAD_CAT_ID = 25544\nELEMENT_SET_NO = 999\nREV_AT_EPOCH = 47747\nBSTAR = 0.00044173",
+    "registerTime": "2026-07-16T08:15:01.874Z"
+  }
+}
+```
+
+## TLE の登録（互換性のための形式）
+
+既存のシステムや運用フローとの互換性のため、衛星の TLE も Clover に登録できます。
+
+> **TLE の扱いについて**
+>
+> TLE は互換性のために現在も利用可能な軌道情報の形式であり、Clover では当面の間 Alpha-5 を含む TLE をサポートします。  
+> 新しく軌道情報を登録する場合は、基本的に OMM 形式をおすすめします。
+
 メソッド `RegisterTLE` にパラメータとして、対象の衛星の ID `satellite_id` と、TLE の各行を `line1`、`line2` のフィールドに分けて渡します。
 ここで、`satellite_id` は仮に 42 とし、TLE には執筆時点の国際宇宙ステーション（ISS）のものを用いることにします。
 
@@ -64,7 +108,7 @@ TLE が登録できていれば、以下のように登録した TLE が返る�
 
 ## 予約可能なパスの取得
 
-TLE を登録すれば、各地上局でのパスを取得できるようになります。
+軌道情報を登録すれば、各地上局でのパスを取得できるようになります。
 
 パスの算出には衛星 ID に加えて地上局 ID も必要なため、まず `ListAvailableGroundStations` で利用可能な地上局の ID を調べます:
 
@@ -137,7 +181,7 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 ```console
 $ grpcurl -cert ./cert.pem -key ./secret.pem \
   -d '{"satellite_id":42,"ground_station_id":1,"aos":"2024-10-17T18:58:01Z","los":"2024-10-17T19:08:18Z"}' \
-  clover.example.com:443 aegs.clover.v1.CloverService/ListPasses
+  clover.example.com:443 aegs.clover.v1.CloverService/CreateContact
 ```
 
 コンタクトの作成に成功すると、作成されたコンタクトの情報が返ります。
@@ -160,7 +204,7 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 コンタクトの `startTime` と `endTime` が引数で渡した AOS/LOS 時刻と異なっていますが、これはコンタクト前後のバッファが加えられたためです。
 上記では 5 分となっていますが、この値は場合によって変わる可能性があります。
 この `startTime` と `endTime` をもとに、地上局の排他予約が行われます。
-また、コンタクトの予約後に TLE を更新して AOS/LOS 時刻が変化した場合も、コンタクトの開始・終了時刻内で多少の余裕があれば、基本的には問題なく運用できるはずです。
+また、コンタクトの予約後に軌道情報を更新して AOS/LOS 時刻が変化した場合も、コンタクトの開始・終了時刻内で多少の余裕があれば、基本的には問題なく運用できるはずです。
 
 ただし、`status` が `PENDING` の状態では予約は確定していません。
 コンタクト作成時の初期状態は `PENDING` で、地上局管理者が承認した場合に `SCHEDULED` に遷移し、そこで予約が確定します。
@@ -168,7 +212,7 @@ $ grpcurl -cert ./cert.pem -key ./secret.pem \
 一度 `REJECTED` になったあと、他の状態に遷移することはありません。
 
 コンタクトの状態は `GetContact` で定期的に確認してください。
-TLE を更新した場合は、最新の AOS/LOS 時刻も確認できます。
+軌道情報を更新した場合は、最新の AOS/LOS 時刻も確認できます。
 
 ```console
 $ grpcurl -cert ./cert.pem -key ./secret.pem \

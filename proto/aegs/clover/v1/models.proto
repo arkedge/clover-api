@@ -30,6 +30,29 @@ message TLE {
   string line2 = 2;
 }
 
+// 登録された OMM の情報。
+message OMMRecord {
+  // OMM の ID
+  int64 id = 1;
+  // 登録された OMM
+  oneof omm {
+    // 登録された OMM（KVN形式）
+    string kvn = 2;
+  }
+  // OMM の登録日時
+  google.protobuf.Timestamp register_time = 3;
+}
+
+// OMM のフォーマット。
+enum OMMFormat {
+  // OMM のフォーマットが指定されていない場合の値。
+  // リクエストでこの値が指定された場合は、INVALID_ARGUMENT エラーを返す。
+  OMM_FORMAT_UNSPECIFIED = 0;
+
+  // OMM のフォーマットが KVN 形式の場合の値
+  OMM_FORMAT_KVN = 1;
+}
+
 // 地上局。
 message GroundStation {
   // 地上局の ID
@@ -95,7 +118,7 @@ message Contact {
   // コンタクトの更新日時。
   // 基本的にはステータスの変更時刻を表す
   google.protobuf.Timestamp update_time = 8;
-  // リクエスト時の TLE に基づいて計算されたパスの詳細。
+  // リクエスト時の軌道情報に基づいて計算されたパスの詳細。
   // GetContact の場合にのみ値が設定される。
   // コンタクト時刻の前後にパスが見つからなかった場合は値が設定されない
   PassDetails pass = 9;
