@@ -15,7 +15,7 @@ export default defineConfig([
       globals: { ...globals.browser, ...globals.node },
     },
   },
-  globalIgnores(["build/", ".react-router/"]),
+  globalIgnores(["build/", ".react-router/", "scripts/"]),
   eslint.configs.recommended,
 
   // TypeScript
