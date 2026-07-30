@@ -51,6 +51,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   }
 
   const tleRecord = await client.getLatestTLE(satelliteId);
+  const stats = await client.getSatelliteStats(satelliteId);
   const groundStations = await client.listAvailableGroundStations(satelliteId);
   const contacts = await client.listUpcomingContacts(satelliteId);
 
@@ -62,7 +63,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     );
   }
 
-  return { satellite, tleRecord, groundStations, contacts, passes };
+  return { satellite, tleRecord, stats, groundStations, contacts, passes };
 };
 
 export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
@@ -129,6 +130,7 @@ export default function SatelliteDetailPage() {
       />
 
       <TLESection />
+      <StatsSection />
       <ContactsSection />
       <PassesSection />
     </main>
@@ -167,6 +169,44 @@ function TLESection() {
       )}
     </Section>
   );
+}
+
+function StatsSection() {
+  const { stats } = useLoaderData<typeof loader>();
+
+  return (
+    <Section title="Stats">
+      <SectionCard>
+        <div className="flex gap-8">
+          <div>
+            <p className="bp6-text-muted">Contacts</p>
+            <p className="text-2xl">{stats.contactCount ?? "0"}</p>
+          </div>
+          <div>
+            <p className="bp6-text-muted">Total Contact Time</p>
+            <p className="text-2xl">
+              {formatDuration(stats.totalContactDuration)}
+            </p>
+          </div>
+        </div>
+      </SectionCard>
+    </Section>
+  );
+}
+
+function formatDuration(duration: string | undefined) {
+  const totalSeconds = Math.floor(Number(duration?.replace("s", "") ?? "0"));
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const parts = [];
+  if (hours) parts.push(`${hours}h`);
+  if (minutes) parts.push(`${minutes}m`);
+  if (seconds || parts.length === 0) parts.push(`${seconds}s`);
+
+  return parts.join(" ");
 }
 
 function ContactsSection() {

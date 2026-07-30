@@ -8,6 +8,7 @@ import {
   GroundStationSchema,
   PassSchema,
   SatelliteSchema,
+  SatelliteStatsSchema,
   TLERecordSchema,
 } from "~/gen/aegs/clover/v1/models_pb";
 import { cloverTransport } from "./grpc";
@@ -58,6 +59,11 @@ export class CloverClient {
       tle: { line1, line2 },
     });
     return toJson(TLERecordSchema, response.tleRecord!);
+  }
+
+  async getSatelliteStats(satelliteId: bigint) {
+    const response = await this.client.getSatelliteStats({ satelliteId });
+    return toJson(SatelliteStatsSchema, response.stats!);
   }
 
   async listAvailableGroundStations(satelliteId: bigint) {
