@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package aegs.clover.v1;
 
+import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 // 衛星。
@@ -157,6 +158,16 @@ message Contact {
     // 他の状態に遷移しない終端状態
     STATUS_FAILED = 7;
   }
+}
+
+// 衛星ごとのコンタクトの統計情報。
+message SatelliteStats {
+  // 統計対象の衛星の ID
+  int64 satellite_id = 1;
+  // コンタクトの件数
+  int64 contact_count = 2;
+  // コンタクトの合計時間
+  google.protobuf.Duration total_contact_duration = 3;
 }
 
 // URL からダウンロード可能なファイル。
