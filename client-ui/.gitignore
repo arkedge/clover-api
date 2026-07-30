@@ -4,3 +4,4 @@ node_modules
 /.react-router
 /build
 .env
+/THIRD_PARTY_LICENSES.txt

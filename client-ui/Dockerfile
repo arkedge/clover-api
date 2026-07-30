@@ -1,6 +1,7 @@
 FROM node:24-bullseye-slim AS base
 
 ENV NODE_ENV=production
+ENV CI=true
 
 # https://github.com/nodejs/corepack/issues/612#issuecomment-2629496091
 RUN npm install -g corepack@latest
@@ -18,6 +19,7 @@ RUN pnpm install --frozen-lockfile --prod=false
 
 COPY . .
 RUN pnpm run build
+RUN pnpm run gen:licenses
 RUN pnpm prune --prod
 
 # runtime stage
@@ -30,6 +32,7 @@ COPY package.json .
 COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/build/client /app/build/client
 COPY --from=build /app/build/server /app/build/server
+COPY --from=build /app/THIRD_PARTY_LICENSES.txt /app/THIRD_PARTY_LICENSES.txt
 
 RUN corepack install
 
