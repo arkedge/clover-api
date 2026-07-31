@@ -276,12 +276,12 @@ function StatsSection() {
         <div className="flex gap-8">
           <div>
             <p className="bp6-text-muted">Contacts</p>
-            <p className="text-2xl">{stats.stats?.contactCount ?? "0"}</p>
+            <p className="text-2xl">{stats.total?.contactCount ?? "0"}</p>
           </div>
           <div>
             <p className="bp6-text-muted">Total Contact Time</p>
             <p className="text-2xl">
-              {formatDuration(stats.stats?.totalContactDuration)}
+              {formatDuration(stats.total?.totalContactDuration)}
             </p>
           </div>
         </div>

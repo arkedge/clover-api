@@ -59,6 +59,7 @@ service CloverService {
   rpc ListContactBlobFiles(ListContactBlobFilesRequest) returns (ListContactBlobFilesResponse);
 
   // 指定した衛星のコンタクトの統計情報を取得する。
+  // ステータスが completed のコンタクトのみを集計対象とする。
   rpc GetSatelliteStats(GetSatelliteStatsRequest) returns (GetSatelliteStatsResponse);
 }
 
@@ -241,5 +242,7 @@ message GetSatelliteStatsRequest {
 
 message GetSatelliteStatsResponse {
   // 指定された衛星の統計情報
-  aegs.clover.v1.SatelliteStats stats = 1;
+  aegs.clover.v1.ContactStats total = 1;
+  // 地上局ごとの統計情報
+  repeated aegs.clover.v1.GroundStationStats ground_station_stats = 2;
 }
