@@ -231,6 +231,12 @@ message ListContactBlobFilesResponse {
 message GetSatelliteStatsRequest {
   // 統計情報を取得する対象の衛星の ID
   int64 satellite_id = 1;
+  // 集計対象期間の開始時刻（コンタクトの開始時刻がこの時刻以降であるものを対象とする）。
+  // 指定しない場合は下限なし
+  optional google.protobuf.Timestamp start_at = 2;
+  // 集計対象期間の終了時刻（コンタクトの開始時刻がこの時刻より前であるものを対象とする）。
+  // 指定しない場合は上限なし
+  optional google.protobuf.Timestamp end_at = 3;
 }
 
 message GetSatelliteStatsResponse {

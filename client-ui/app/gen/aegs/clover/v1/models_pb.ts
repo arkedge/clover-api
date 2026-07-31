@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file aegs/clover/v1/models.proto.
  */
 export const file_aegs_clover_v1_models: GenFile = /*@__PURE__*/
-  fileDesc("ChthZWdzL2Nsb3Zlci92MS9tb2RlbHMucHJvdG8SDmFlZ3MuY2xvdmVyLnYxIiUKCVNhdGVsbGl0ZRIKCgJpZBgBIAEoAxIMCgRuYW1lGAIgASgJImwKCVRMRVJlY29yZBIKCgJpZBgBIAEoAxIgCgN0bGUYAiABKAsyEy5hZWdzLmNsb3Zlci52MS5UTEUSMQoNcmVnaXN0ZXJfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIwoDVExFEg0KBWxpbmUxGAEgASgJEg0KBWxpbmUyGAIgASgJImAKCU9NTVJlY29yZBIKCgJpZBgBIAEoAxINCgNrdm4YAiABKAlIABIxCg1yZWdpc3Rlcl90aW1lGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIFCgNvbW0iVgoNR3JvdW5kU3RhdGlvbhIKCgJpZBgBIAEoAxIMCgRuYW1lGAIgASgJEisKCGxvY2F0aW9uGAMgASgLMhkuYWVncy5jbG92ZXIudjEuTGF0TG5nQWx0IkIKCUxhdExuZ0FsdBIQCghsYXRpdHVkZRgBIAEoARIRCglsb25naXR1ZGUYAiABKAESEAoIYWx0aXR1ZGUYAyABKAEirwEKBFBhc3MSLAoJc2F0ZWxsaXRlGAEgASgLMhkuYWVncy5jbG92ZXIudjEuU2F0ZWxsaXRlEjUKDmdyb3VuZF9zdGF0aW9uGAIgASgLMh0uYWVncy5jbG92ZXIudjEuR3JvdW5kU3RhdGlvbhIsCgdkZXRhaWxzGAMgASgLMhsuYWVncy5jbG92ZXIudjEuUGFzc0RldGFpbHMSFAoMaXNfYXZhaWxhYmxlGAQgASgIInYKC1Bhc3NEZXRhaWxzEicKA2FvcxgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASJwoDbG9zGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIVCg1tYXhfZWxldmF0aW9uGAMgASgBIpUECgdDb250YWN0EgoKAmlkGAEgASgDEhQKDHNhdGVsbGl0ZV9pZBgCIAEoAxIZChFncm91bmRfc3RhdGlvbl9pZBgDIAEoAxIuCgZzdGF0dXMYBCABKA4yHi5hZWdzLmNsb3Zlci52MS5Db250YWN0LlN0YXR1cxIuCgpzdGFydF90aW1lGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLwoLY3JlYXRlX3RpbWUYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi8KC3VwZGF0ZV90aW1lGAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIpCgRwYXNzGAkgASgLMhsuYWVncy5jbG92ZXIudjEuUGFzc0RldGFpbHMisQEKBlN0YXR1cxIWChJTVEFUVVNfVU5TUEVDSUZJRUQQABISCg5TVEFUVVNfUEVORElORxABEhQKEFNUQVRVU19TQ0hFRFVMRUQQAhITCg9TVEFUVVNfUkVKRUNURUQQAxITCg9TVEFUVVNfQ0FOQ0VMRUQQBBISCg5TVEFUVVNfUlVOTklORxAFEhQKEFNUQVRVU19DT01QTEVURUQQBhIRCg1TVEFUVVNfRkFJTEVEEAcieAoOU2F0ZWxsaXRlU3RhdHMSFAoMc2F0ZWxsaXRlX2lkGAEgASgDEhUKDWNvbnRhY3RfY291bnQYAiABKAMSOQoWdG90YWxfY29udGFjdF9kdXJhdGlvbhgDIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbiI3CghCbG9iRmlsZRILCgN1cmwYASABKAkSEAoIZmlsZW5hbWUYAiABKAkSDAoEc2l6ZRgDIAEoAyo7CglPTU1Gb3JtYXQSGgoWT01NX0ZPUk1BVF9VTlNQRUNJRklFRBAAEhIKDk9NTV9GT1JNQVRfS1ZOEAFiBnByb3RvMw", [file_google_protobuf_duration, file_google_protobuf_timestamp]);
+  fileDesc("ChthZWdzL2Nsb3Zlci92MS9tb2RlbHMucHJvdG8SDmFlZ3MuY2xvdmVyLnYxIiUKCVNhdGVsbGl0ZRIKCgJpZBgBIAEoAxIMCgRuYW1lGAIgASgJImwKCVRMRVJlY29yZBIKCgJpZBgBIAEoAxIgCgN0bGUYAiABKAsyEy5hZWdzLmNsb3Zlci52MS5UTEUSMQoNcmVnaXN0ZXJfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIwoDVExFEg0KBWxpbmUxGAEgASgJEg0KBWxpbmUyGAIgASgJImAKCU9NTVJlY29yZBIKCgJpZBgBIAEoAxINCgNrdm4YAiABKAlIABIxCg1yZWdpc3Rlcl90aW1lGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIFCgNvbW0iVgoNR3JvdW5kU3RhdGlvbhIKCgJpZBgBIAEoAxIMCgRuYW1lGAIgASgJEisKCGxvY2F0aW9uGAMgASgLMhkuYWVncy5jbG92ZXIudjEuTGF0TG5nQWx0IkIKCUxhdExuZ0FsdBIQCghsYXRpdHVkZRgBIAEoARIRCglsb25naXR1ZGUYAiABKAESEAoIYWx0aXR1ZGUYAyABKAEirwEKBFBhc3MSLAoJc2F0ZWxsaXRlGAEgASgLMhkuYWVncy5jbG92ZXIudjEuU2F0ZWxsaXRlEjUKDmdyb3VuZF9zdGF0aW9uGAIgASgLMh0uYWVncy5jbG92ZXIudjEuR3JvdW5kU3RhdGlvbhIsCgdkZXRhaWxzGAMgASgLMhsuYWVncy5jbG92ZXIudjEuUGFzc0RldGFpbHMSFAoMaXNfYXZhaWxhYmxlGAQgASgIInYKC1Bhc3NEZXRhaWxzEicKA2FvcxgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASJwoDbG9zGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIVCg1tYXhfZWxldmF0aW9uGAMgASgBIpUECgdDb250YWN0EgoKAmlkGAEgASgDEhQKDHNhdGVsbGl0ZV9pZBgCIAEoAxIZChFncm91bmRfc3RhdGlvbl9pZBgDIAEoAxIuCgZzdGF0dXMYBCABKA4yHi5hZWdzLmNsb3Zlci52MS5Db250YWN0LlN0YXR1cxIuCgpzdGFydF90aW1lGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIsCghlbmRfdGltZRgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLwoLY3JlYXRlX3RpbWUYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi8KC3VwZGF0ZV90aW1lGAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIpCgRwYXNzGAkgASgLMhsuYWVncy5jbG92ZXIudjEuUGFzc0RldGFpbHMisQEKBlN0YXR1cxIWChJTVEFUVVNfVU5TUEVDSUZJRUQQABISCg5TVEFUVVNfUEVORElORxABEhQKEFNUQVRVU19TQ0hFRFVMRUQQAhITCg9TVEFUVVNfUkVKRUNURUQQAxITCg9TVEFUVVNfQ0FOQ0VMRUQQBBISCg5TVEFUVVNfUlVOTklORxAFEhQKEFNUQVRVU19DT01QTEVURUQQBhIRCg1TVEFUVVNfRkFJTEVEEAciYAoMQ29udGFjdFN0YXRzEhUKDWNvbnRhY3RfY291bnQYASABKAMSOQoWdG90YWxfY29udGFjdF9kdXJhdGlvbhgCIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbiKVAQoOU2F0ZWxsaXRlU3RhdHMSFAoMc2F0ZWxsaXRlX2lkGAEgASgDEisKBXN0YXRzGAIgASgLMhwuYWVncy5jbG92ZXIudjEuQ29udGFjdFN0YXRzEkAKFGdyb3VuZF9zdGF0aW9uX3N0YXRzGAMgAygLMiIuYWVncy5jbG92ZXIudjEuR3JvdW5kU3RhdGlvblN0YXRzIlwKEkdyb3VuZFN0YXRpb25TdGF0cxIZChFncm91bmRfc3RhdGlvbl9pZBgBIAEoAxIrCgVzdGF0cxgCIAEoCzIcLmFlZ3MuY2xvdmVyLnYxLkNvbnRhY3RTdGF0cyI3CghCbG9iRmlsZRILCgN1cmwYASABKAkSEAoIZmlsZW5hbWUYAiABKAkSDAoEc2l6ZRgDIAEoAyo7CglPTU1Gb3JtYXQSGgoWT01NX0ZPUk1BVF9VTlNQRUNJRklFRBAAEhIKDk9NTV9GT1JNQVRfS1ZOEAFiBnByb3RvMw", [file_google_protobuf_duration, file_google_protobuf_timestamp]);
 
 /**
  * 衛星。
@@ -758,6 +758,55 @@ export const Contact_StatusSchema: GenEnum<Contact_Status, Contact_StatusJson> =
   enumDesc(file_aegs_clover_v1_models, 8, 0);
 
 /**
+ * コンタクトの件数・合計時間の統計情報。
+ *
+ * @generated from message aegs.clover.v1.ContactStats
+ */
+export type ContactStats = Message<"aegs.clover.v1.ContactStats"> & {
+  /**
+   * コンタクトの件数
+   *
+   * @generated from field: int64 contact_count = 1;
+   */
+  contactCount: bigint;
+
+  /**
+   * コンタクトの合計時間
+   *
+   * @generated from field: google.protobuf.Duration total_contact_duration = 2;
+   */
+  totalContactDuration?: Duration;
+};
+
+/**
+ * コンタクトの件数・合計時間の統計情報。
+ *
+ * @generated from message aegs.clover.v1.ContactStats
+ */
+export type ContactStatsJson = {
+  /**
+   * コンタクトの件数
+   *
+   * @generated from field: int64 contact_count = 1;
+   */
+  contactCount?: string;
+
+  /**
+   * コンタクトの合計時間
+   *
+   * @generated from field: google.protobuf.Duration total_contact_duration = 2;
+   */
+  totalContactDuration?: DurationJson;
+};
+
+/**
+ * Describes the message aegs.clover.v1.ContactStats.
+ * Use `create(ContactStatsSchema)` to create a new message.
+ */
+export const ContactStatsSchema: GenMessage<ContactStats, {jsonType: ContactStatsJson}> = /*@__PURE__*/
+  messageDesc(file_aegs_clover_v1_models, 9);
+
+/**
  * 衛星ごとのコンタクトの統計情報。
  *
  * @generated from message aegs.clover.v1.SatelliteStats
@@ -771,18 +820,18 @@ export type SatelliteStats = Message<"aegs.clover.v1.SatelliteStats"> & {
   satelliteId: bigint;
 
   /**
-   * コンタクトの件数
+   * 統計情報
    *
-   * @generated from field: int64 contact_count = 2;
+   * @generated from field: aegs.clover.v1.ContactStats stats = 2;
    */
-  contactCount: bigint;
+  stats?: ContactStats;
 
   /**
-   * コンタクトの合計時間
+   * 地上局ごとの統計情報
    *
-   * @generated from field: google.protobuf.Duration total_contact_duration = 3;
+   * @generated from field: repeated aegs.clover.v1.GroundStationStats ground_station_stats = 3;
    */
-  totalContactDuration?: Duration;
+  groundStationStats: GroundStationStats[];
 };
 
 /**
@@ -799,18 +848,18 @@ export type SatelliteStatsJson = {
   satelliteId?: string;
 
   /**
-   * コンタクトの件数
+   * 統計情報
    *
-   * @generated from field: int64 contact_count = 2;
+   * @generated from field: aegs.clover.v1.ContactStats stats = 2;
    */
-  contactCount?: string;
+  stats?: ContactStatsJson;
 
   /**
-   * コンタクトの合計時間
+   * 地上局ごとの統計情報
    *
-   * @generated from field: google.protobuf.Duration total_contact_duration = 3;
+   * @generated from field: repeated aegs.clover.v1.GroundStationStats ground_station_stats = 3;
    */
-  totalContactDuration?: DurationJson;
+  groundStationStats?: GroundStationStatsJson[];
 };
 
 /**
@@ -818,7 +867,56 @@ export type SatelliteStatsJson = {
  * Use `create(SatelliteStatsSchema)` to create a new message.
  */
 export const SatelliteStatsSchema: GenMessage<SatelliteStats, {jsonType: SatelliteStatsJson}> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_models, 9);
+  messageDesc(file_aegs_clover_v1_models, 10);
+
+/**
+ * 衛星・地上局ごとのコンタクトの統計情報。
+ *
+ * @generated from message aegs.clover.v1.GroundStationStats
+ */
+export type GroundStationStats = Message<"aegs.clover.v1.GroundStationStats"> & {
+  /**
+   * 統計対象の地上局の ID
+   *
+   * @generated from field: int64 ground_station_id = 1;
+   */
+  groundStationId: bigint;
+
+  /**
+   * 統計情報
+   *
+   * @generated from field: aegs.clover.v1.ContactStats stats = 2;
+   */
+  stats?: ContactStats;
+};
+
+/**
+ * 衛星・地上局ごとのコンタクトの統計情報。
+ *
+ * @generated from message aegs.clover.v1.GroundStationStats
+ */
+export type GroundStationStatsJson = {
+  /**
+   * 統計対象の地上局の ID
+   *
+   * @generated from field: int64 ground_station_id = 1;
+   */
+  groundStationId?: string;
+
+  /**
+   * 統計情報
+   *
+   * @generated from field: aegs.clover.v1.ContactStats stats = 2;
+   */
+  stats?: ContactStatsJson;
+};
+
+/**
+ * Describes the message aegs.clover.v1.GroundStationStats.
+ * Use `create(GroundStationStatsSchema)` to create a new message.
+ */
+export const GroundStationStatsSchema: GenMessage<GroundStationStats, {jsonType: GroundStationStatsJson}> = /*@__PURE__*/
+  messageDesc(file_aegs_clover_v1_models, 11);
 
 /**
  * URL からダウンロード可能なファイル。
@@ -881,7 +979,7 @@ export type BlobFileJson = {
  * Use `create(BlobFileSchema)` to create a new message.
  */
 export const BlobFileSchema: GenMessage<BlobFile, {jsonType: BlobFileJson}> = /*@__PURE__*/
-  messageDesc(file_aegs_clover_v1_models, 10);
+  messageDesc(file_aegs_clover_v1_models, 12);
 
 /**
  * OMM のフォーマット。

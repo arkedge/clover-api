@@ -8,6 +8,7 @@ import {
   DialogFooter,
   FormGroup,
   HTMLTable,
+  Icon,
   InputGroup,
   Intent,
   NonIdealState,
@@ -34,7 +35,11 @@ import { CloverClient } from "~/.server/CloverClient";
 import { ContactTable } from "~/components/ContactTable";
 import { PassJson } from "~/gen/aegs/clover/v1/models_pb";
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+function toDateInputValue(date: Date) {
+  return date.toISOString().slice(0, 10);
+}
+
+export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.satelliteId, "Missing satelliteId param");
   let satelliteId: bigint;
   try {
@@ -42,6 +47,12 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   } catch {
     throw new Response(null, { status: 404, statusText: "Not Found" });
   }
+
+  const searchParams = new URL(request.url).searchParams;
+  const startAtParam = searchParams.get("start_at");
+  const endAtParam = searchParams.get("end_at");
+  const startAt = startAtParam ? new Date(startAtParam) : new Date(0);
+  const endAt = endAtParam ? new Date(endAtParam) : new Date();
 
   const client = new CloverClient();
 
@@ -51,7 +62,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   }
 
   const tleRecord = await client.getLatestTLE(satelliteId);
-  const stats = await client.getSatelliteStats(satelliteId);
+  const stats = await client.getSatelliteStats(satelliteId, startAt, endAt);
   const groundStations = await client.listAvailableGroundStations(satelliteId);
   const contacts = await client.listUpcomingContacts(satelliteId);
 
@@ -63,7 +74,16 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     );
   }
 
-  return { satellite, tleRecord, stats, groundStations, contacts, passes };
+  return {
+    satellite,
+    tleRecord,
+    stats,
+    statsStartAt: toDateInputValue(startAt),
+    statsEndAt: toDateInputValue(endAt),
+    groundStations,
+    contacts,
+    passes,
+  };
 };
 
 export const meta: MetaFunction<typeof loader> = ({ loaderData }) => [
@@ -171,31 +191,155 @@ function TLESection() {
   );
 }
 
+type GroundStationSortColumn = "groundStation" | "contacts" | "duration";
+
 function StatsSection() {
-  const { stats } = useLoaderData<typeof loader>();
+  const { stats, statsStartAt, statsEndAt, groundStations } =
+    useLoaderData<typeof loader>();
+
+  const [sortColumn, setSortColumn] =
+    useState<GroundStationSortColumn>("groundStation");
+  const [sortAscending, setSortAscending] = useState(true);
+
+  const toggleSort = (column: GroundStationSortColumn) => {
+    if (column === sortColumn) {
+      setSortAscending(!sortAscending);
+    } else {
+      setSortColumn(column);
+      setSortAscending(true);
+    }
+  };
+
+  const sortedGroundStationStats = [...(stats.groundStationStats ?? [])].sort(
+    (a, b) => {
+      let comparison = 0;
+      if (sortColumn === "groundStation") {
+        const aName =
+          groundStations.find((gs) => gs.id === a.groundStationId)?.name ?? "";
+        const bName =
+          groundStations.find((gs) => gs.id === b.groundStationId)?.name ?? "";
+        comparison = aName.localeCompare(bName);
+      } else if (sortColumn === "contacts") {
+        comparison =
+          Number(a.stats?.contactCount ?? 0) -
+          Number(b.stats?.contactCount ?? 0);
+      } else {
+        comparison =
+          parseDurationSeconds(a.stats?.totalContactDuration) -
+          parseDurationSeconds(b.stats?.totalContactDuration);
+      }
+      return sortAscending ? comparison : -comparison;
+    },
+  );
+
+  const sortIcon = (column: GroundStationSortColumn) =>
+    sortColumn === column ? (
+      <Icon icon={sortAscending ? "caret-up" : "caret-down"} />
+    ) : null;
 
   return (
-    <Section title="Stats">
+    <Section
+      title="Stats"
+      rightElement={
+        <Form method="get" className="flex items-end gap-3">
+          <FormGroup
+            label="From"
+            labelFor="start_at"
+            inline={true}
+            className="mb-0"
+          >
+            <InputGroup
+              type="date"
+              name="start_at"
+              id="start_at"
+              defaultValue={statsStartAt}
+            />
+          </FormGroup>
+          <FormGroup
+            label="To"
+            labelFor="end_at"
+            inline={true}
+            className="mb-0"
+          >
+            <InputGroup
+              type="date"
+              name="end_at"
+              id="end_at"
+              defaultValue={statsEndAt}
+            />
+          </FormGroup>
+          <Button type="submit" text="Filter" />
+        </Form>
+      }
+    >
       <SectionCard>
         <div className="flex gap-8">
           <div>
             <p className="bp6-text-muted">Contacts</p>
-            <p className="text-2xl">{stats.contactCount ?? "0"}</p>
+            <p className="text-2xl">{stats.stats?.contactCount ?? "0"}</p>
           </div>
           <div>
             <p className="bp6-text-muted">Total Contact Time</p>
             <p className="text-2xl">
-              {formatDuration(stats.totalContactDuration)}
+              {formatDuration(stats.stats?.totalContactDuration)}
             </p>
           </div>
         </div>
       </SectionCard>
+
+      {sortedGroundStationStats.length ? (
+        <SectionCard>
+          <HTMLTable striped={true} className="w-full table-fixed">
+            <thead>
+              <tr>
+                <th
+                  className="w-1/2 cursor-pointer"
+                  onClick={() => toggleSort("groundStation")}
+                >
+                  Ground Station {sortIcon("groundStation")}
+                </th>
+                <th
+                  className="w-1/4 cursor-pointer"
+                  onClick={() => toggleSort("contacts")}
+                >
+                  Contacts {sortIcon("contacts")}
+                </th>
+                <th
+                  className="w-1/4 cursor-pointer"
+                  onClick={() => toggleSort("duration")}
+                >
+                  Total Contact Time {sortIcon("duration")}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedGroundStationStats.map((gsStats) => (
+                <tr key={gsStats.groundStationId}>
+                  <td>
+                    {
+                      groundStations.find(
+                        (gs) => gs.id === gsStats.groundStationId,
+                      )?.name
+                    }
+                  </td>
+                  <td>{gsStats.stats?.contactCount ?? "0"}</td>
+                  <td>{formatDuration(gsStats.stats?.totalContactDuration)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </HTMLTable>
+        </SectionCard>
+      ) : null}
     </Section>
   );
 }
 
+function parseDurationSeconds(duration: string | undefined) {
+  return Math.floor(Number(duration?.replace("s", "") ?? "0"));
+}
+
 function formatDuration(duration: string | undefined) {
-  const totalSeconds = Math.floor(Number(duration?.replace("s", "") ?? "0"));
+  const totalSeconds = parseDurationSeconds(duration);
 
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);

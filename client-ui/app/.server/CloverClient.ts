@@ -61,8 +61,12 @@ export class CloverClient {
     return toJson(TLERecordSchema, response.tleRecord!);
   }
 
-  async getSatelliteStats(satelliteId: bigint) {
-    const response = await this.client.getSatelliteStats({ satelliteId });
+  async getSatelliteStats(satelliteId: bigint, startAt: Date, endAt: Date) {
+    const response = await this.client.getSatelliteStats({
+      satelliteId,
+      startAt: timestampFromDate(startAt),
+      endAt: timestampFromDate(endAt),
+    });
     return toJson(SatelliteStatsSchema, response.stats!);
   }
 

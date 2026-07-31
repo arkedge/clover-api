@@ -160,14 +160,30 @@ message Contact {
   }
 }
 
+// コンタクトの件数・合計時間の統計情報。
+message ContactStats {
+  // コンタクトの件数
+  int64 contact_count = 1;
+  // コンタクトの合計時間
+  google.protobuf.Duration total_contact_duration = 2;
+}
+
 // 衛星ごとのコンタクトの統計情報。
 message SatelliteStats {
   // 統計対象の衛星の ID
   int64 satellite_id = 1;
-  // コンタクトの件数
-  int64 contact_count = 2;
-  // コンタクトの合計時間
-  google.protobuf.Duration total_contact_duration = 3;
+  // 統計情報
+  ContactStats stats = 2;
+  // 地上局ごとの統計情報
+  repeated GroundStationStats ground_station_stats = 3;
+}
+
+// 衛星・地上局ごとのコンタクトの統計情報。
+message GroundStationStats {
+  // 統計対象の地上局の ID
+  int64 ground_station_id = 1;
+  // 統計情報
+  ContactStats stats = 2;
 }
 
 // URL からダウンロード可能なファイル。
