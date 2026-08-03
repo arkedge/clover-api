@@ -57,6 +57,10 @@ service CloverService {
   // 指定したコンタクトで得られたファイルのリストを取得する。
   // コンタクトがファイルを生成するよう設定されていない場合は NOT_FOUND (5) のエラーが返る。
   rpc ListContactBlobFiles(ListContactBlobFilesRequest) returns (ListContactBlobFilesResponse);
+
+  // 指定した衛星のコンタクトの統計情報を取得する。
+  // ステータスが completed のコンタクトのみを集計対象とする。
+  rpc GetSatelliteStats(GetSatelliteStatsRequest) returns (GetSatelliteStatsResponse);
 }
 
 message ListSatellitesRequest {}
@@ -223,4 +227,22 @@ message ListContactBlobFilesRequest {
 message ListContactBlobFilesResponse {
   // コンタクトで生成されたファイルのリスト
   repeated aegs.clover.v1.BlobFile blob_files = 1;
+}
+
+message GetSatelliteStatsRequest {
+  // 統計情報を取得する対象の衛星の ID
+  int64 satellite_id = 1;
+  // 集計対象期間の開始時刻（コンタクトの開始時刻がこの時刻以降であるものを対象とする）。
+  // 指定しない場合は下限なし
+  optional google.protobuf.Timestamp start_at = 2;
+  // 集計対象期間の終了時刻（コンタクトの開始時刻がこの時刻より前であるものを対象とする）。
+  // 指定しない場合は上限なし
+  optional google.protobuf.Timestamp end_at = 3;
+}
+
+message GetSatelliteStatsResponse {
+  // 指定された衛星の統計情報
+  aegs.clover.v1.ContactStats total = 1;
+  // 地上局ごとの統計情報
+  repeated aegs.clover.v1.GroundStationStats ground_station_stats = 2;
 }

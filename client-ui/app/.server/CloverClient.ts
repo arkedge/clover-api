@@ -1,7 +1,10 @@
 import { toJson } from "@bufbuild/protobuf";
 import { timestampFromDate } from "@bufbuild/protobuf/wkt";
 import { Client, Code, ConnectError, createClient } from "@connectrpc/connect";
-import { CloverService } from "~/gen/aegs/clover/v1/clover_service_pb";
+import {
+  CloverService,
+  GetSatelliteStatsResponseSchema,
+} from "~/gen/aegs/clover/v1/clover_service_pb";
 import {
   BlobFileSchema,
   ContactSchema,
@@ -58,6 +61,15 @@ export class CloverClient {
       tle: { line1, line2 },
     });
     return toJson(TLERecordSchema, response.tleRecord!);
+  }
+
+  async getSatelliteStats(satelliteId: bigint, startAt: Date, endAt: Date) {
+    const response = await this.client.getSatelliteStats({
+      satelliteId,
+      startAt: timestampFromDate(startAt),
+      endAt: timestampFromDate(endAt),
+    });
+    return toJson(GetSatelliteStatsResponseSchema, response);
   }
 
   async listAvailableGroundStations(satelliteId: bigint) {
