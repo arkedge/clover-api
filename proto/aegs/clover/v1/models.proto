@@ -39,6 +39,8 @@ message OMMRecord {
   oneof omm {
     // 登録された OMM（KVN形式）
     string kvn = 2;
+    // 登録された OMM（構造化フィールド形式）
+    OMMElements elements = 4;
   }
   // OMM の登録日時
   google.protobuf.Timestamp register_time = 3;
@@ -116,6 +118,9 @@ enum OMMFormat {
 
   // OMM のフォーマットが KVN 形式の場合の値
   OMM_FORMAT_KVN = 1;
+
+  // OMM のフォーマットが構造化フィールド形式の場合の値
+  OMM_FORMAT_ELEMENTS = 2;
 }
 
 // 地上局。
