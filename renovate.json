@@ -43,8 +43,5 @@
   "labels": [
     "dependencies"
   ],
-  "prHourlyLimit": 0,
-  "additionalReviewers": [
-    "sankichi92"
-  ]
+  "prHourlyLimit": 0
 }
