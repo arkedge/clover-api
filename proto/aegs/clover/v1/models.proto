@@ -39,9 +39,75 @@ message OMMRecord {
   oneof omm {
     // 登録された OMM（KVN形式）
     string kvn = 2;
+    // 登録された OMM（構造化フィールド形式）
+    OMMElements elements = 4;
   }
   // OMM の登録日時
   google.protobuf.Timestamp register_time = 3;
+}
+
+// 構造化フィールドで表現した OMM (CCSDS Orbit Mean-Elements Message)。
+message OMMElements {
+  // OMM のメタデータ
+  OMMMetadata metadata = 1;
+  // 平均軌道要素
+  OMMMeanElements mean_elements = 2;
+  // TLE 由来のパラメータ
+  OMMTleParameters tle_parameters = 3;
+}
+
+// OMM のメタデータ。
+message OMMMetadata {
+  // オブジェクト名 NORAD カタログ登録前には値がない
+  optional string object_name = 1;
+  // オブジェクト ID NORAD カタログ登録前には値がない
+  optional string object_id = 2;
+  // 基準座標系の中心
+  string center_name = 3;
+  // 基準座標系
+  string ref_frame = 4;
+  // 時刻系 UTC のみを受け付ける
+  string time_system = 5;
+  // 平均軌道要素のモデル
+  string mean_element_theory = 6;
+}
+
+// OMM の平均軌道要素。
+message OMMMeanElements {
+  // 軌道要素の基準時刻 (UTC)
+  google.protobuf.Timestamp epoch = 1;
+  // 平均運動 [rev/day]
+  double mean_motion = 2;
+  // 離心率
+  double eccentricity = 3;
+  // 軌道傾斜角 [deg]
+  double inclination = 4;
+  // 昇交点赤経 [deg]
+  double ra_of_asc_node = 5;
+  // 近地点引数 [deg]
+  double arg_of_pericenter = 6;
+  // 平均近点角 [deg]
+  double mean_anomaly = 7;
+}
+
+// TLE 由来の OMM パラメータ。
+message OMMTleParameters {
+  // 出力用の力学モデル番号
+  uint32 ephemeris_type = 1;
+  // 分類 NORAD カタログ登録前には値がない
+  optional string classification_type = 2;
+  // NORAD カタログ番号 NORAD カタログ登録前には値がない
+  optional uint32 norad_cat_id = 3;
+  // 要素セット番号 NORAD カタログ登録前には値がない
+  optional uint32 element_set_no = 4;
+  // 基準時刻でのレボリューション数 NORAD カタログ登録前には値がない
+  optional uint32 rev_at_epoch = 5;
+  // 抵抗項
+  double bstar = 6;
+  // 平均運動の1次微分
+  double mean_motion_dot = 7;
+  // 平均運動の2次微分
+  double mean_motion_ddot = 8;
 }
 
 // OMM のフォーマット。
@@ -52,6 +118,9 @@ enum OMMFormat {
 
   // OMM のフォーマットが KVN 形式の場合の値
   OMM_FORMAT_KVN = 1;
+
+  // OMM のフォーマットが構造化フィールド形式の場合の値
+  OMM_FORMAT_ELEMENTS = 2;
 }
 
 // 地上局。
