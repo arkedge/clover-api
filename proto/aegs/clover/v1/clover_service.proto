@@ -121,6 +121,8 @@ message RegisterOMMRequest {
   oneof omm {
     // 登録する OMM（KVN形式）
     string kvn = 2;
+    // 登録する OMM（構造化フィールド形式）
+    aegs.clover.v1.OMMElements elements = 3;
   }
 }
 
