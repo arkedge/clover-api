@@ -54,6 +54,11 @@ service CloverService {
   // キャンセル不能な状態の場合は FAILED_PRECONDITION (9) のエラーが返る。
   rpc CancelContact(CancelContactRequest) returns (CancelContactResponse);
 
+  // 指定したコンタクトで地上局の運用に使用した OMM を取得する。
+  // 地上局の運用開始時点で登録されていた最新の OMM が記録されており、その後に OMM を登録しても変わらない。
+  // 記録が無い場合 (記録開始前のコンタクト、運用開始前に失敗したコンタクト、外部局でのコンタクト等) は NOT_FOUND (5) のエラーが返る。
+  rpc GetContactUsedOMM(GetContactUsedOMMRequest) returns (GetContactUsedOMMResponse);
+
   // 指定したコンタクトで得られたファイルのリストを取得する。
   // コンタクトがファイルを生成するよう設定されていない場合は NOT_FOUND (5) のエラーが返る。
   rpc ListContactBlobFiles(ListContactBlobFilesRequest) returns (ListContactBlobFilesResponse);
@@ -219,6 +224,18 @@ message CancelContactRequest {
 message CancelContactResponse {
   // キャンセルされたコンタクト
   aegs.clover.v1.Contact contact = 1;
+}
+
+message GetContactUsedOMMRequest {
+  // OMM を取得するコンタクトの ID
+  int64 contact_id = 1;
+  // OMM のフォーマット
+  aegs.clover.v1.OMMFormat omm_format = 2;
+}
+
+message GetContactUsedOMMResponse {
+  // 指定されたコンタクトで使用した OMM 情報
+  aegs.clover.v1.OMMRecord omm_record = 1;
 }
 
 message ListContactBlobFilesRequest {
