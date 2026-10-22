@@ -2,6 +2,9 @@ services:
   app:
     build:
       dockerfile: ./Dockerfile
+      args:
+        # Node の版は .nvmrc で決める。`NODE_VERSION=$(cat .nvmrc) docker compose up --build` のように渡す。
+        NODE_VERSION: ${NODE_VERSION:?set NODE_VERSION to the version in .nvmrc}
     env_file: .env
     ports:
       - "3000:3000"

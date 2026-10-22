@@ -44,10 +44,16 @@ jobs:
             type=sha,prefix=
             type=raw,value=latest
 
+      - name: Read Node version
+        id: node
+        run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+
       - uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         id: build-push
         with:
           context: ./client-ui
+          build-args: |
+            NODE_VERSION=${{ steps.node.outputs.version }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
