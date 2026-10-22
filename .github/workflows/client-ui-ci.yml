@@ -6,13 +6,13 @@ on:
       - main
     paths:
       - client-ui/**
-      - .github/workflows/client-ui.yml
+      - .github/workflows/client-ui-ci.yml
   pull_request:
     branches:
       - main
     paths:
       - client-ui/**
-      - .github/workflows/client-ui.yml
+      - .github/workflows/client-ui-ci.yml
 
 defaults:
   run:
@@ -71,9 +71,15 @@ jobs:
           # renovate: datasource=github-releases depName=docker/buildx
           version: "v0.30.1"
 
+      - name: Read Node version
+        id: node
+        run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+
       - uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         id: build
         with:
           context: ./client-ui
+          build-args: |
+            NODE_VERSION=${{ steps.node.outputs.version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
