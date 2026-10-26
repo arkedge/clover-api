@@ -5,3 +5,6 @@ packages:
 # 実効性は `pnpm config get minimumReleaseAge` で確認できる（undefined なら効いていない）
 # 詰まった場合は `pnpm add <pkg> --config.minimumReleaseAge=0` で一時的に回避する
 minimumReleaseAge: 10080 # 7 days in minutes
+minimumReleaseAgeExclude:
+  # Renovate security update: react-router@7.18.2
+  - react-router@7.18.2
